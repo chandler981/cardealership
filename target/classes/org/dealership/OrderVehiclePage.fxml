@@ -1,0 +1,44 @@
+<!--
+   Author: Chandler Ward
+   Written: 2/6/2024
+   Updated: 2/6/2024
+   
+   This file is the code for creating the page that allows the 
+   manager to order a new vehicle from a specified place.
+--> 
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dealership.OrderVehiclePageController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#90b882" height="92.0" stroke="#90b882" strokeType="INSIDE" width="600.0" />
+      <Text layoutX="240.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order Vehicle">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <TextField fx:id="VehicleMakeOrder" layoutX="14.0" layoutY="118.0" promptText="*Nissna, Honda...etc*" />
+      <TextField fx:id="VehicleModelOrder" layoutX="14.0" layoutY="187.0" promptText="*Altima...etc*" />
+      <TextField fx:id="VehicleYearOrder" layoutX="14.0" layoutY="250.0" promptText="*2022, 2023...etc*" />
+      <TextField fx:id="VehicleTypeOrder" layoutX="14.0" layoutY="313.0" promptText="*SUV, Sedan, Coupe...etc*" />
+      <TextField fx:id="VehicleTransTypeOrder" layoutX="225.0" layoutY="118.0" promptText="*Automatic, Manual...etc*" />
+      <TextField fx:id="VehicleColorOrder" layoutX="225.0" layoutY="187.0" promptText="*Red, Blue, Black...etc*" />
+      <Text layoutX="63.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Make" />
+      <Text layoutX="61.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Model" />
+      <Text layoutX="56.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Year" />
+      <Text layoutX="55.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Type" />
+      <Text layoutX="255.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Transmission" />
+      <Text layoutX="265.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Color" />
+      <Button layoutX="22.0" layoutY="353.0" mnemonicParsing="false" onAction="#OrderVehicle" text="Order" />
+      <Button layoutX="534.0" layoutY="353.0" mnemonicParsing="false" onAction="#goBackButton" text="Back" />
+      <ChoiceBox fx:id="OrderFromOptions" layoutX="225.0" layoutY="250.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>

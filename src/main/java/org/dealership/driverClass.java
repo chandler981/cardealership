@@ -27,7 +27,7 @@ public class driverClass extends Application{
     private static Stage stage; //stage variable for the ui to be able to cycle between scenes
 
     //in the password section put whatever password was created in your mySQL for the database on your desktop, this will allow you to connect and test queries and all
-    private static String sqlConnection = "jdbc:mysql://localhost:3306/mysql?user = root & password = G@607537";
+    private static String sqlConnection = "jdbc:mysql://localhost:3306/mysql?user = root & password = G@607537"; //password will need to be changed based on what your MySQL password is set to
 
     public static void main(String[] args) throws Exception{
         launch(args);
@@ -37,7 +37,7 @@ public class driverClass extends Application{
         try{
             try{
                 stage = primaryStage;
-                Parent root = FXMLLoader.load((getClass().getResource("LoginScreenPanel.fxml")));
+                Parent root = FXMLLoader.load((getClass().getResource("/fxmlFiles/LoginScreenPanel.fxml")));
                 Scene newScene = new Scene(root, 600, 400);
                 primaryStage.setScene(newScene);
                 primaryStage.show();
@@ -54,7 +54,7 @@ public class driverClass extends Application{
     }
 
     public void changeScene(String fxml) throws IOException { //changes the scene based on the input from other methods via button presses
-        Parent root = FXMLLoader.load(getClass().getResource(fxml));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxmlFiles/" + fxml));
         stage.getScene().setRoot(root);
     }
 

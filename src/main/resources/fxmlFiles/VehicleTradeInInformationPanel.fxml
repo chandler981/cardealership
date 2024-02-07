@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Author: Chandler Ward
+   Written: 2/6/2024
+   Updated: 2/6/2024
+   
+   This file has the code for creating a page that allows
+   an employee to input the information that allows the user to
+   have the system record the inputs for a used vehicle that can 
+   be used for a discount and just adding to the database.
+--> 
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" 
+xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#90b882" height="92.0" stroke="#90b882" strokeType="INSIDE" width="600.0" />
+      <Text layoutX="174.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trade-In Vehicle Information">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <TextField fx:id="TradeInVehicleMake" layoutX="25.0" layoutY="123.0" />
+      <TextField fx:id="TradeInVehicleModel" layoutX="25.0" layoutY="175.0" />
+      <TextField fx:id="TradeInVehicleColor" layoutX="25.0" layoutY="230.0" />
+      <TextField fx:id="TradeInVehicleYear" layoutX="25.0" layoutY="283.0" />
+      <TextField fx:id="TradeInVehicleMileage" layoutX="25.0" layoutY="337.0" />
+      <TextField fx:id="TradeInVehiclTransmission" layoutX="226.0" layoutY="123.0" />
+      <TextField fx:id="TradeInVehicleType" layoutX="226.0" layoutY="175.0" />
+      <TextField fx:id="TradeInVehicleVIN" layoutX="226.0" layoutY="230.0" />
+      <Text layoutX="25.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Make" />
+      <Text layoutX="25.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Model" />
+      <Text layoutX="25.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Color" />
+      <Text layoutX="25.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Year" />
+      <Text layoutX="25.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Mileage" />
+      <Text layoutX="226.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Transmission" />
+      <Text layoutX="226.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle VIN" />
+      <Text layoutX="226.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VIN Verification" />
+      <TextField fx:id="TradeInVehicleVINVerification" layoutX="226.0" layoutY="283.0" />
+      <Text layoutX="232.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Type" />
+   </children>
+</AnchorPane>

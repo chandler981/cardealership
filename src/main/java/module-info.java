@@ -4,7 +4,6 @@ module org.openjfx {
 
     requires java.sql;
 
-    opens org.dealership.controllerClasses to javafx.fxml;
+    opens org.dealership to javafx.fxml;
     exports org.dealership;
-    exports org.dealership.controllerClasses;
 }

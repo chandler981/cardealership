@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+   Author: Chandler Ward
+   Written: 2/6/2024
+   Updated: 2/6/2024
+   
+   This file is for the page that handles creating the invoice
+   for a customer and for the dealership to ahve on record.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dealership.controllerClasses.CreateInvoiceController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#90b882" height="92.0" stroke="#90b882" strokeType="INSIDE" width="600.0" />
+      <Text layoutX="237.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Invoice">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <TextField fx:id="CustomerIDInvoice" layoutX="29.0" layoutY="113.0" />
+      <TextField fx:id="PurchaseDateInvoice" layoutX="29.0" layoutY="168.0" />
+      <TextField fx:id="PaymentTypeInvoice" layoutX="29.0" layoutY="222.0" />
+      <TextField fx:id="BuyerAddressInvoice" layoutX="29.0" layoutY="276.0" />
+      <TextField fx:id="DiscountTotalInvoice" layoutX="29.0" layoutY="331.0" />
+      <TextField fx:id="BuyerFeesInvoice" layoutX="225.0" layoutY="113.0" />
+      <TextField fx:id="PaymentTotalInvoice" layoutX="225.0" layoutY="168.0" />
+      <Text layoutX="29.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID" />
+      <Text layoutX="29.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Purchase Date" />
+      <Text layoutX="29.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Type" />
+      <Text layoutX="29.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address of Buyer" />
+      <Text layoutX="29.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Discount Total" />
+      <Text layoutX="226.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fees" />
+      <Text layoutX="226.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Total" />
+      <Button layoutX="534.0" layoutY="350.0" mnemonicParsing="false" onAction="#GoBackToEmpOptions" text="Back" />
+   </children>
+</AnchorPane>

@@ -13,51 +13,51 @@
  * % java driverClass
  */
 
-package org.dealership.controllerClasses;
+ package org.dealership.controllerClasses;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-
-public class EmployeeOptionsController {
-
+ import javafx.event.ActionEvent;
+ import javafx.fxml.FXML;
+ 
+ public class EmployeeOptionsController {
+ 
+      @FXML
+     void BuyVehicle(ActionEvent event) {
+ 
+     }
+ 
      @FXML
-    void BuyVehicle(ActionEvent event) {
-
-    }
-
-    @FXML
-    void CreateInvoice(ActionEvent event) {
-
-    }
-
-    @FXML
-    void OrderVehicle(ActionEvent event) {
-
-    }
-
-    @FXML
-    void RecCustomerInfo(ActionEvent event) {
-
-    }
-
-    @FXML
-    void SearchVehicleInfo(ActionEvent event) {
-
-    }
-
-    @FXML
-    void SignOut(ActionEvent event) {
-
-    }
-
-    @FXML
-    void TradeInVehicle(ActionEvent event) {
-
-    }
-
-    @FXML
-    void WeeklyDiscounts(ActionEvent event) {
-
-    }
-    
-}
+     void CreateInvoice(ActionEvent event) {
+ 
+     }
+ 
+     @FXML
+     void OrderVehicle(ActionEvent event) {
+ 
+     }
+ 
+     @FXML
+     void RecCustomerInfo(ActionEvent event) {
+ 
+     }
+ 
+     @FXML
+     void SearchVehicleInfo(ActionEvent event) {
+ 
+     }
+ 
+     @FXML
+     void SignOut(ActionEvent event) {
+ 
+     }
+ 
+     @FXML
+     void TradeInVehicle(ActionEvent event) {
+ 
+     }
+ 
+     @FXML
+     void WeeklyDiscounts(ActionEvent event) {
+ 
+     }
+     
+ }

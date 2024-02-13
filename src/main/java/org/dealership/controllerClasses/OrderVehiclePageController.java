@@ -14,50 +14,50 @@
  * % java driverClass
  */
 
-package org.dealership.controllerClasses;
+ package org.dealership.controllerClasses;
 
-import java.io.IOException;
-
-import org.dealership.driverClass;
-
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
-
-public class OrderVehiclePageController {
-
-    driverClass driver = new driverClass();
-
-    @FXML
-    private TextField VehicleColorOrder;
-
-    @FXML
-    private TextField VehicleMakeOrder;
-
-    @FXML
-    private TextField VehicleModelOrder;
-
-    @FXML
-    private TextField VehicleTransTypeOrder;
-
-    @FXML
-    private TextField VehicleTypeOrder;
-
-    @FXML
-    private TextField VehicleYearOrder;
-
-    @FXML
-    private ChoiceBox<?> OrderFromOptions;
-
-    @FXML
-    void OrderVehicle(ActionEvent event) {
-
-    }
-
-    @FXML
-    void goBackButton(ActionEvent event) throws IOException {
-        driver.changeScene("ManagerOptionPanel.fxml");
-    }
-
-}
+ import java.io.IOException;
+ 
+ import org.dealership.driverClass;
+ 
+ import javafx.event.ActionEvent;
+ import javafx.fxml.FXML;
+ import javafx.scene.control.ChoiceBox;
+ import javafx.scene.control.TextField;
+ 
+ public class OrderVehiclePageController {
+ 
+     driverClass driver = new driverClass();
+ 
+     @FXML
+     private TextField VehicleColorOrder;
+ 
+     @FXML
+     private TextField VehicleMakeOrder;
+ 
+     @FXML
+     private TextField VehicleModelOrder;
+ 
+     @FXML
+     private TextField VehicleTransTypeOrder;
+ 
+     @FXML
+     private TextField VehicleTypeOrder;
+ 
+     @FXML
+     private TextField VehicleYearOrder;
+ 
+     @FXML
+     private ChoiceBox<?> OrderFromOptions;
+ 
+     @FXML
+     void OrderVehicle(ActionEvent event) {
+ 
+     }
+ 
+     @FXML
+     void goBackButton(ActionEvent event) throws IOException {
+         driver.changeScene("ManagerOptionPanel.fxml");
+     }
+ 
+ }

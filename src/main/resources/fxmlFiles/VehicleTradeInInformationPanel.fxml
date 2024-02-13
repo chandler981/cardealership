@@ -16,8 +16,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" 
-xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dealership.controllerClasses.VehicleTradeInInformationPanelController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#90b882" height="92.0" stroke="#90b882" strokeType="INSIDE" width="600.0" />
       <Text layoutX="174.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trade-In Vehicle Information">
@@ -43,5 +42,7 @@ xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
       <Text layoutX="226.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VIN Verification" />
       <TextField fx:id="TradeInVehicleVINVerification" layoutX="226.0" layoutY="283.0" />
       <Text layoutX="232.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Type" />
+      <Button layoutX="233.0" layoutY="337.0" mnemonicParsing="false" onAction="#EnterTradeInVehicleInfo" text="Enter Information" />
+      <Button layoutX="528.0" layoutY="350.0" mnemonicParsing="false" onAction="#GoBackToEmpOptions" text="Back" />
    </children>
 </AnchorPane>

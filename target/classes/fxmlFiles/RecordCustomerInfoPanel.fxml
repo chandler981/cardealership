@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+   Author: Chandler Ward
+   Written: 2/6/2024
+   Updated: 2/6/2024
+   
+   This file is the code for creating a new page based on 
+   recording a customers information to be uploaded into the
+   database.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dealership.controllerClasses.RecordCustomerInfoPanelController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#90b882" height="92.0" stroke="#90b882" strokeType="INSIDE" width="600.0" />
+      <Text layoutX="169.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Record Customer Information" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <TextField fx:id="CustomerFirstAndLast" layoutX="37.0" layoutY="122.0" />
+      <TextField fx:id="CustomerCreditScore" layoutX="37.0" layoutY="189.0" />
+      <TextField fx:id="CustomerState" layoutX="37.0" layoutY="259.0" />
+      <TextField fx:id="CustomerDOB" layoutX="226.0" layoutY="122.0" />
+      <TextField fx:id="CustomerDLN" layoutX="226.0" layoutY="189.0" />
+      <TextField fx:id="CustomerZipCOde" layoutX="226.0" layoutY="259.0" />
+      <TextField fx:id="CustomerSSN" layoutX="431.0" layoutY="123.0" />
+      <TextField fx:id="CustomerPhoneNum" layoutX="431.0" layoutY="188.0" />
+      <TextField fx:id="CustomerInsuranceNum" layoutX="431.0" layoutY="259.0" />
+      <Text layoutX="37.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name First &amp; Last" />
+      <Text layoutX="37.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Credit Score" />
+      <Text layoutX="37.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State" />
+      <Text layoutX="226.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Of Birth" />
+      <Text layoutX="226.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drivers License Number" />
+      <Text layoutX="226.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zip Code" />
+      <Text layoutX="431.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SSN " />
+      <Text layoutX="431.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number" />
+      <Text layoutX="431.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance Number" />
+      <Button layoutX="38.0" layoutY="346.0" mnemonicParsing="false" onAction="#EnterCustomerInfo" text="Enter Info" />
+      <Button layoutX="529.0" layoutY="346.0" mnemonicParsing="false" onAction="#GoBackToEmpOptions" text="Back" />
+   </children>
+</AnchorPane>

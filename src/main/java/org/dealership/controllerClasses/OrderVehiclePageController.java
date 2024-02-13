@@ -57,7 +57,7 @@
  
      @FXML
      void goBackButton(ActionEvent event) throws IOException {
-         driver.changeScene("ManagerOptionPanel.fxml");
+         driver.changeScene("EmployeeOptionsPanel.fxml");
      }
  
  }

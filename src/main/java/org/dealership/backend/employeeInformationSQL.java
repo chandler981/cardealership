@@ -61,6 +61,11 @@
      private String getEmpPass(){
          return this.employeePassword;
      }
+
+     /*
+      * fix issue where any user can use any password to login to their respective account based on the 
+      * ID entered
+      */
      
      private void checkLoginHelper(String ID, String password) throws IOException{ 
          LoginScreenController login = new LoginScreenController();

@@ -19,57 +19,68 @@
  
  public class employee {
  
-     private String name;
-     private String DOB;
-     private String SSN;
-     private String PhoneNum;
-     private String address;
-     private String bankAccntNum;
-     private int totalSalesMade;
- 
-     private static double fivePercComm = 0.05;
-     private static double sevenPercComm = 0.07;
- 
-     private double saleAmmount;
- 
-     private double employeePaymentAmmount;
- 
-     employeeInformationSQL empSQL = new employeeInformationSQL();
- 
-     private void updateEmployeeInformation(){
- 
-     }
- 
-     private void createEmployeeID(){
- 
-     }
- 
-     public void computeCommHelper(double saleAmmount){
-         setSaleAmmnt(saleAmmount);
-     }
- 
-     public void setSaleAmmnt(double saleAmmount){
-         this.saleAmmount = saleAmmount;
-     }
- 
-     public double getSaleAmmnt(){
-         return this.saleAmmount;
-     }
- 
-     private void computeCommissions(){
-         if(saleAmmount <= 100000.0){ // checks if sales made by employee are <= 100k
-             employeePaymentAmmount = saleAmmount * 0.05;
-         }
-         if(saleAmmount > 100000.0 && saleAmmount <= 200000.0){ //checks if sales made by employee are > 100k or between 200k
-             employeePaymentAmmount = saleAmmount * 0.07;
-         }
-     }
- 
-     public double getEmpPaymentAmmnt(){
-         return employeePaymentAmmount;
-     }
- 
-     private void salesData(){
- 
-     }    
+    private String name;
+    private String DOB;
+    private String SSN;
+    private String PhoneNum;
+    private String address;
+    private String bankAccntNum;
+    private int totalSalesMade;
+
+    private static boolean currentEmployeeStatus;
+
+    private static double fivePercComm = 0.05;
+    private static double sevenPercComm = 0.07;
+
+    private double saleAmmount;
+
+    private double employeePaymentAmmount;
+
+    employeeInformationSQL empSQL = new employeeInformationSQL();
+
+    private void updateEmployeeInformation(){
+
+    }
+
+    private void createEmployeeID(){
+
+    }
+
+    public void currentEmployeeStatusUpdate(Boolean statusUpdate){
+        currentEmployeeStatus = statusUpdate;
+        System.out.println("status is updated");
+    }
+
+    public Boolean getEmployeeStatus(){
+        return currentEmployeeStatus;
+    }
+
+    public void computeCommHelper(double saleAmmount){
+        setSaleAmmnt(saleAmmount);
+    }
+
+    public void setSaleAmmnt(double saleAmmount){
+        this.saleAmmount = saleAmmount;
+    }
+
+    public double getSaleAmmnt(){
+        return this.saleAmmount;
+    }
+
+    private void computeCommissions(){
+        if(saleAmmount <= 100000.0){ // checks if sales made by employee are <= 100k
+            employeePaymentAmmount = saleAmmount * 0.05;
+        }
+        if(saleAmmount > 100000.0 && saleAmmount <= 200000.0){ //checks if sales made by employee are > 100k or between 200k
+            employeePaymentAmmount = saleAmmount * 0.07;
+        }
+    }
+
+    public double getEmpPaymentAmmnt(){
+        return employeePaymentAmmount;
+    }
+
+    private void salesData(){
+
+    }    
  }

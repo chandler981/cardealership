@@ -19,15 +19,17 @@
  import java.io.IOException;
  
  import org.dealership.driverClass;
- 
- import javafx.event.ActionEvent;
+import org.dealership.Entities.employee;
+
+import javafx.event.ActionEvent;
  import javafx.fxml.FXML;
  import javafx.scene.control.ChoiceBox;
  import javafx.scene.control.TextField;
  
  public class OrderVehiclePageController {
  
-     driverClass driver = new driverClass();
+    driverClass driver = new driverClass();
+    employee currentEmployee = new employee();
  
      @FXML
      private TextField VehicleColorOrder;
@@ -57,7 +59,13 @@
  
      @FXML
      void goBackButton(ActionEvent event) throws IOException {
-         driver.changeScene("EmployeeOptionsPanel.fxml");
+        if(currentEmployee.getEmployeeStatus() == true){
+            driver.changeScene("ManagerOptionPanel.fxml");
+            System.out.println(currentEmployee.getEmployeeStatus());
+        }else{
+            driver.changeScene("EmployeeOptionsPanel.fxml");
+            System.out.println("status is employee");
+        }
      }
  
  }

@@ -72,7 +72,8 @@ create table vehicle(
     vehicleMileage INT,
     vehicleCondition VARCHAR(25),
     vehicleSalePrice FLOAT,
-    vehicleAvailability VARCHAR(25)
+    vehicleAvailability VARCHAR(25),
+    vehicleVerification BOOLEAN
 );
 --@block
 drop table vehicle;

@@ -17,6 +17,7 @@ package org.dealership.controllerClasses;
 import java.io.IOException;
 
 import org.dealership.driverClass;
+import org.dealership.Entities.employee;
 import org.dealership.backend.employeeInformationSQL;
 
 import javafx.event.ActionEvent;
@@ -27,6 +28,7 @@ import javafx.scene.control.TextField;
 public class LoginScreenController {
 
     driverClass driver = new driverClass();
+    employee emp = new employee();
     
     @FXML
     private PasswordField employeePassword;
@@ -50,6 +52,8 @@ public class LoginScreenController {
     public void changeToEmployee() throws IOException{
         driver.changeScene("EmployeeOptionsPanel.fxml");
     }
+
+    
 
     
 }

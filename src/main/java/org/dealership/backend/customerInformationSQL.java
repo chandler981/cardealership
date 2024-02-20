@@ -21,6 +21,51 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.dealership.driverClass;
+
 public class customerInformationSQL {
-    
+    driverClass driver = new driverClass();
+
+
+     /*
+      * Author: Thomas Dooley
+      Written: 16/02/2024
+      Last updated: 18/02/2024
+
+      method for adding a new customer row in database in Customer table
+      */
+      public void addNewCustomerInfoHelper( String SSN,  String driverLicense,  String dateOfBirth, String phoneNumber, String firstName, String lastName, String customerAddress, Float downPayment, String creditScore, String insuranceNo){
+        addNewCustomerInfo(SSN,  driverLicense,  dateOfBirth, phoneNumber,  firstName,  lastName,  customerAddress, downPayment,  creditScore,  insuranceNo);
+      }
+      private void addNewCustomerInfo(String SSN,  String driverLicense,  String dateOfBirth, String phoneNumber, String firstName, String lastName, String customerAddress, Float downPayment, String creditScore, String insuranceNo){
+     
+        try{
+            Connection conn = DriverManager.getConnection(driver.getConnection());
+            System.out.println("Connection Established.");
+
+            String insertToTable = "insert into customer(customerID, SSN, driverLicense, dateOfBirth, phoneNumber, firstName, lastName, customerAddress, downpayment, creditScore, insuranceNo) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            PreparedStatement stmt = conn.prepareStatement(insertToTable);
+
+            stmt.setString(2, SSN);
+            stmt.setString(3, driverLicense);
+            stmt.setString(4, dateOfBirth);
+            stmt.setString(5, phoneNumber);
+            stmt.setString(6, firstName);
+            stmt.setString(7, lastName);
+            stmt.setString(8, customerAddress);
+            stmt.setFloat(9, downPayment);
+            stmt.setString(10, creditScore);
+            stmt.setString(11, insuranceNo);
+            
+            stmt.addBatch();
+            stmt.executeBatch();
+
+            conn.close();
+            stmt.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }

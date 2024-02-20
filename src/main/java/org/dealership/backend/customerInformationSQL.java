@@ -34,10 +34,10 @@ public class customerInformationSQL {
 
       method for adding a new customer row in database in Customer table
       */
-      public void addNewCustomerInfoHelper(String customerID, String SSN,  String driverLicense,  String dateOfBirth, String phoneNumber, String firstName, String lastName, String customerAddress, String creditScore, String insuranceNo){
-        addNewCustomerInfo(customerID, SSN,  driverLicense,  dateOfBirth, phoneNumber,  firstName,  lastName,  customerAddress,  creditScore,  insuranceNo);
+      public void addNewCustomerInfoHelper( String SSN,  String driverLicense,  String dateOfBirth, String phoneNumber, String firstName, String lastName, String customerAddress, Float downPayment, String creditScore, String insuranceNo){
+        addNewCustomerInfo(SSN,  driverLicense,  dateOfBirth, phoneNumber,  firstName,  lastName,  customerAddress, downPayment,  creditScore,  insuranceNo);
       }
-      private void addNewCustomerInfo(String customerID, String SSN,  String driverLicense,  String dateOfBirth, String phoneNumber, String firstName, String lastName, String customerAddress, String creditScore, String insuranceNo){
+      private void addNewCustomerInfo(String SSN,  String driverLicense,  String dateOfBirth, String phoneNumber, String firstName, String lastName, String customerAddress, Float downPayment, String creditScore, String insuranceNo){
      
         try{
             Connection conn = DriverManager.getConnection(driver.getConnection());
@@ -47,7 +47,6 @@ public class customerInformationSQL {
 
             PreparedStatement stmt = conn.prepareStatement(insertToTable);
 
-            stmt.setString(1, customerID);
             stmt.setString(2, SSN);
             stmt.setString(3, driverLicense);
             stmt.setString(4, dateOfBirth);
@@ -55,6 +54,7 @@ public class customerInformationSQL {
             stmt.setString(6, firstName);
             stmt.setString(7, lastName);
             stmt.setString(8, customerAddress);
+            stmt.setFloat(9, downPayment);
             stmt.setString(10, creditScore);
             stmt.setString(11, insuranceNo);
             

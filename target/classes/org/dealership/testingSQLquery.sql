@@ -72,8 +72,7 @@ create table vehicle(
     vehicleMileage INT,
     vehicleCondition VARCHAR(25),
     vehicleSalePrice FLOAT,
-    vehicleAvailability VARCHAR(25),
-    vehicleVerification BOOLEAN
+    vehicleAvailability VARCHAR(25)
 );
 --@block
 drop table vehicle;
@@ -95,8 +94,8 @@ select * from vehicle;
 
 --@block
 create table customer(
-    customerID VARCHAR(4)
-    SSN VARCHAR(11) primary key,
+    customerID VARCHAR(4) primary key AUTO_INCREMENT,
+    SSN VARCHAR(11),
     driversLicense VARCHAR(9),
     dateOfBirth DATE,
     phoneNumber VARCHAR(10),

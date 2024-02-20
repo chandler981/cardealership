@@ -65,6 +65,7 @@ public class RecordCustomerInfoPanelController {
        String phoneNumber = CustomerPhoneNum.getText();
        String name = CustomerFirstAndLast.getText();
        String customerAddress = CustomerState.getText() + " " + CustomerZipCOde.getText();
+       Float downPayment = (float) 0.00;
        String creditScore = CustomerCreditScore.getText();
        String insuranceNo = CustomerInsuranceNum.getText();
 
@@ -73,13 +74,10 @@ public class RecordCustomerInfoPanelController {
        String firstName = names[0];
        String lastName = names[1]; 
 
-       //method for creating Customer ID here
-        String customerID =customer.createID();
-
 
     // sending to database
     customerInformationSQL customer = new customerInformationSQL();
-    customer.addNewCustomerInfoHelper(customerID, SSN,  driverLicense,  dateOfBirth, phoneNumber,  firstName,  lastName,  customerAddress,  creditScore,  insuranceNo);
+    customer.addNewCustomerInfoHelper(SSN,  driverLicense,  dateOfBirth, phoneNumber,  firstName,  lastName,  customerAddress, downPayment, creditScore, insuranceNo);
     }
 
     @FXML

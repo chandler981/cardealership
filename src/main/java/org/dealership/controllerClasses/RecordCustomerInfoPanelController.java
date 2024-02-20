@@ -19,6 +19,9 @@ package org.dealership.controllerClasses;
 import java.io.IOException;
 
 import org.dealership.driverClass;
+import org.dealership.Entities.customer;
+import org.dealership.backend.customerInformationSQL;
+import org.dealership.backend.vehicleInformationSQL;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -55,7 +58,28 @@ public class RecordCustomerInfoPanelController {
 
     @FXML
     void EnterCustomerInfo(ActionEvent event) {
+        //getting input from stage into usable varibles
+       String SSN = CustomerSSN.getText();
+       String driverLicense = CustomerDLN.getText();
+       String dateOfBirth = CustomerDOB.getText();
+       String phoneNumber = CustomerPhoneNum.getText();
+       String name = CustomerFirstAndLast.getText();
+       String customerAddress = CustomerState.getText() + " " + CustomerZipCOde.getText();
+       String creditScore = CustomerCreditScore.getText();
+       String insuranceNo = CustomerInsuranceNum.getText();
 
+       // split name to first and last, plus a trim incase of extra space as first
+       String[] names=name.trim().split("\\s+");
+       String firstName = names[0];
+       String lastName = names[1]; 
+
+       //method for creating Customer ID here
+        String customerID =customer.createID();
+
+
+    // sending to database
+    customerInformationSQL customer = new customerInformationSQL();
+    customer.addNewCustomerInfoHelper(customerID, SSN,  driverLicense,  dateOfBirth, phoneNumber,  firstName,  lastName,  customerAddress,  creditScore,  insuranceNo);
     }
 
     @FXML

@@ -93,3 +93,17 @@ select vehicleMake from vehicle where vehicleVIN = '1HGCM82633A123456'
 --@block 
 select * from vehicle;
 
+--@block
+create table customer(
+    customerID VARCHAR(4)
+    SSN VARCHAR(11) primary key,
+    driversLicense VARCHAR(9),
+    dateOfBirth DATE,
+    phoneNumber VARCHAR(10),
+    firstName VARCHAR(50),
+    lastName VARCHAR(50),
+    customerAddress VARCHAR(255),
+    downPayment FLOAT,
+    creditScore VARCHAR(3),
+    insuranceNo VARCHAR(10)
+);

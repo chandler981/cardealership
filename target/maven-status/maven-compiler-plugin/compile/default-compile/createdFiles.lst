@@ -1,4 +1,5 @@
 org\dealership\Entities\transaction.class
+org\dealership\controllerClasses\VehicleInfoFromSearchController.class
 org\dealership\controllerClasses\WeeklyDealsPanelController.class
 org\dealership\controllerClasses\LoginScreenController.class
 org\dealership\controllerClasses\CustomerBuyingVehiclePanelController.class

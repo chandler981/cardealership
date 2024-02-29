@@ -94,7 +94,7 @@ select * from vehicle;
 
 --@block
 create table customer(
-    customerID VARCHAR(4) primary key AUTO_INCREMENT,
+    customerID INT(4) PRIMARY KEY AUTO_INCREMENT,
     SSN VARCHAR(11),
     driversLicense VARCHAR(9),
     dateOfBirth DATE,
@@ -104,5 +104,22 @@ create table customer(
     customerAddress VARCHAR(255),
     downPayment FLOAT,
     creditScore VARCHAR(3),
-    insuranceNo VARCHAR(10)
+    insuranceNo VARCHAR(10),
+    paymentType VARCHAR(20)
 );
+
+--@block 
+INSERT INTO customer (
+    SSN, driversLicense, dateOfBirth, phoneNumber, firstName, lastName, customerAddress, downPayment, creditScore, insuranceNo, paymentType) 
+VALUES 
+('123-45-6789', 'DL1234567', '1990-05-15', '555-1234', 'John', 'Doe', '123 Main St, Cityville, USA', 2000.00, '750', 'INS456789', 'Credit Card'), 
+( '987-65-4321', 'DL7654321', '1985-08-22', '555-5678', 'Jane', 'Smith', '456 Oak St, Townsville, USA', 1500.50, '800', 'INS987654', 'Credit Card');
+
+--@block
+SELECT * FROM customer
+
+--@block
+SELECT customerID FROM customer where SSN = '123-45-6789';
+
+--@block
+DROP TABLE customer

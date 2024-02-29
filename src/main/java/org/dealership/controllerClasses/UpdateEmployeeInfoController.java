@@ -45,9 +45,6 @@ public class UpdateEmployeeInfoController {
     private TextField EmpSSNChange;
 
     @FXML
-    private TextField EmpTotalSalesChange;
-
-    @FXML
     void UpdateEmployeeInfo(ActionEvent event) {
         
     }

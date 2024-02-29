@@ -25,6 +25,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 public class SearchVehicleInformationPanelController {
+    driverClass driver = new driverClass();
 
     @FXML
     private TextField VehicleColorSearch;
@@ -46,13 +47,18 @@ public class SearchVehicleInformationPanelController {
 
     @FXML
     void GoBackToEmpOptions(ActionEvent event) throws IOException {
-        driverClass driver = new driverClass();
         driver.changeScene("EmployeeOptionsPanel.fxml");
     }
 
     @FXML
-    void SearchVehicleInfo(ActionEvent event) {
+    void SearchVehicleInfo(ActionEvent event) throws IOException {
+        /*create conditional once search page is complete so that if a vehicle
+         * is searched it will redirect to the order vehicle page, until then this 
+         * will only take you to the vehicle information page
+         */
+        
 
+        driver.changeScene("SearchVehicleInfoResultPanel.fxml");
     }
 
     

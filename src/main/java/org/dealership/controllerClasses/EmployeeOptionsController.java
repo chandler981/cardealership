@@ -28,22 +28,7 @@ import javafx.event.ActionEvent;
  
     @FXML
     void BuyVehicle(ActionEvent event) throws IOException {
-        driver.changeScene("CustomerBuyingVehiclePanel.fxml");
-    }
-
-    @FXML
-    void CreateInvoice(ActionEvent event) throws IOException {
-        driver.changeScene("CreateInvoicePanel.fxml");
-    }
-
-    @FXML
-    void OrderVehicle(ActionEvent event) throws IOException {
-        driver.changeScene("OrderVehiclePage.fxml");
-    }
-
-    @FXML
-    void RecCustomerInfo(ActionEvent event) throws IOException {
-        driver.changeScene("RecordCustomerInfoPanel.fxml");
+        driver.changeScene("SearchVehicleInformationPanel.fxml");
     }
 
     @FXML
@@ -52,18 +37,13 @@ import javafx.event.ActionEvent;
     }
 
     @FXML
-    void SignOut(ActionEvent event) throws IOException {
-        driver.changeScene("LoginScreenPanel.fxml");
-    }
-
-    @FXML
-    void TradeInVehicle(ActionEvent event) throws IOException {
-        driver.changeScene("VehicleTradeInInformationPanel.fxml");
-    }
-
-    @FXML
     void WeeklyDiscounts(ActionEvent event) throws IOException {
         driver.changeScene("WeeklyDealsPanel.fxml");
+    }
+
+    @FXML
+    void SignOut(ActionEvent event) throws IOException {
+        driver.changeScene("LoginScreenPanel.fxml");
     }
      
  }

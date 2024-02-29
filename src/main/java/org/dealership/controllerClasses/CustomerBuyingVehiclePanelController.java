@@ -19,6 +19,7 @@ package org.dealership.controllerClasses;
 import java.io.IOException;
 
 import org.dealership.driverClass;
+import org.dealership.backend.customerInformationSQL;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,6 +30,7 @@ import javafx.scene.control.TextField;
 public class CustomerBuyingVehiclePanelController {
 
     driverClass driver = new driverClass();
+    customerInformationSQL customer = new customerInformationSQL();
 
     @FXML
     private TextField CustomerAddress;
@@ -37,7 +39,7 @@ public class CustomerBuyingVehiclePanelController {
     private ChoiceBox<?> CustomerBuyOption;
 
     @FXML
-    private TextField CustomerDIscount;
+    private TextField CustomerDiscount;
 
     @FXML
     private TextField CustomerDownPayment;
@@ -52,8 +54,27 @@ public class CustomerBuyingVehiclePanelController {
     private DatePicker CustomerPurchaseDate;
 
     @FXML
+    void BuyVehicle(ActionEvent event) throws IOException {
+        /*
+         * add in functionality where it pushes entered info to the
+         * invoice controller class and to the database if needed
+        */
+
+        driver.changeScene("CreateInvoicePanel.fxml");
+    }
+
+    @FXML
     void GoBackToEmpOptions(ActionEvent event) throws IOException {
         driver.changeScene("EmployeeOptionsPanel.fxml");
     }
-    
+
+    @FXML
+    void ShowCustomerInfo(ActionEvent event) {
+        System.out.println(customer.getCustomerID());
+        String customerInfo[] = customer.getInformationForBuyingPage();
+        CustomerAddress.setText(customerInfo[6]);
+        CustomerDownPayment.setText((String) customerInfo[7]);
+        CustomerIDBuying.setText(customer.getCustomerID());
+        CustomerPaymentType.setText(customerInfo[10]);
+    }
 }

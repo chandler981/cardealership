@@ -58,8 +58,12 @@ public class driverClass extends Application{
         stage.getScene().setRoot(root);
     }
 
+    //method for helping with persisting info from one page to another when its needed
+    public void changeScne(String fxml, Parent root) throws IOException{
+        stage.getScene().setRoot(root);
+    }
+
     public String getConnection(){
         return sqlConnection;
     }
-
 }

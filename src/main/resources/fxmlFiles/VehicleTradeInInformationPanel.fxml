@@ -46,5 +46,6 @@
       <Text layoutX="232.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Type" />
       <Button layoutX="233.0" layoutY="337.0" mnemonicParsing="false" onAction="#EnterTradeInVehicleInfo" text="Enter Information" />
       <Button layoutX="528.0" layoutY="350.0" mnemonicParsing="false" onAction="#GoBackToEmpOptions" text="Back" />
+      <Button layoutX="392.0" layoutY="338.0" mnemonicParsing="false" onAction="#TestButtonToChangeScene" text="testing" />
    </children>
 </AnchorPane>

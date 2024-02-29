@@ -61,11 +61,6 @@ public class employeeInformationSQL{
     private String getEmpPass(){
         return this.employeePassword;
     }
-
-    /*
-    * fix issue where any user can use any password to login to their respective account based on the 
-    * ID entered
-    */
     
     private void checkLoginHelper(String ID, String password) throws IOException{ 
         LoginScreenController login = new LoginScreenController();
@@ -90,7 +85,6 @@ public class employeeInformationSQL{
 
                 if(checkUser.equals(ID)){ //checks to see if result from data table is equal to user input userName from login screen
                     System.out.println("Username is valid. ");
-
                 }
             }
 
@@ -98,30 +92,26 @@ public class employeeInformationSQL{
                 String checkPass = passwordResult.getString("employeePassword");
                 String checkUser = userNameResult.getString("employeeID");
 
-            if(checkPass.equals(password) && checkUser.equals(ID)){ //checks if the password from the database query is equal to login screen password input
-                    System.out.println("password is correct. ");
-                    if(managerStatusResult.next()){
-                        Boolean checkManager = managerStatusResult.getBoolean("isManager");
-                        if(checkManager){
-                                System.out.println("Manager logged in.");
-                                currentEmployee.currentEmployeeStatusUpdate(true); 
-                                login.changeToManager();
+                if(checkPass.equals(password) && checkUser.equals(ID)){ //checks if the password from the database query is equal to login screen password input
+                        System.out.println("password is correct. ");
+                        if(managerStatusResult.next()){
+                            Boolean checkManager = managerStatusResult.getBoolean("isManager");
+                            if(checkManager == true){
+                                    System.out.println("Manager logged in.");
+                                    currentEmployee.currentEmployeeStatusUpdate(true); 
+                                    login.changeToManager();
+                            }
+                            else{
+                                    System.out.println("Employee logged in.");
+                                    currentEmployee.currentEmployeeStatusUpdate(false);
+                                    login.changeToEmployee();
+                            }
                         }
-                        else{
-                                System.out.println("Employee logged in.");
-                                currentEmployee.currentEmployeeStatusUpdate(false);
-                                login.changeToEmployee();
-                                //add in where it redirects to regular employee page
-                        }
-                    }
-            }
+                }
             else{
                 System.out.println("Password wrong with current username. ");
             }
-
             }
-
-
             passwordCheck.close();
             userNameCheck.close();
             System.out.println("stmt was closed.");
@@ -165,4 +155,6 @@ public class employeeInformationSQL{
             e.printStackTrace();
         }
     }
+
+    
 }

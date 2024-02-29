@@ -1,7 +1,7 @@
 /*
- * Author:       Chandler Ward
+ * Author:       Chandler Ward, Thomas Dooley
  * Written:      2 / 6 / 2024
- * Last Updated: 2 / 6 / 2024
+ * Last Updated: 2 / 18 / 2024
  * 
  * Compilation:  javac driverClass.java
  * Execution:    java driverClass
@@ -25,20 +25,17 @@ import org.dealership.driverClass;
 
 public class customerInformationSQL {
     driverClass driver = new driverClass();
-
-
-     /*
-      * Author: Thomas Dooley
-      Written: 16/02/2024
-      Last updated: 18/02/2024
-
-      method for adding a new customer row in database in Customer table
-      */
-      public void addNewCustomerInfoHelper( String SSN,  String driverLicense,  String dateOfBirth, String phoneNumber, String firstName, String lastName, String customerAddress, Float downPayment, String creditScore, String insuranceNo){
+    public static String SSNforInfo;
+    public static String customerID;
+    public static String[] customerInfoHolder = new String[15];
+      
+    public void addNewCustomerInfoHelper(String SSN,  String driverLicense,  String dateOfBirth, String phoneNumber, String firstName, 
+                                        String lastName, String customerAddress, Float downPayment, String creditScore, String insuranceNo)
+    {
         addNewCustomerInfo(SSN,  driverLicense,  dateOfBirth, phoneNumber,  firstName,  lastName,  customerAddress, downPayment,  creditScore,  insuranceNo);
-      }
-      private void addNewCustomerInfo(String SSN,  String driverLicense,  String dateOfBirth, String phoneNumber, String firstName, String lastName, String customerAddress, Float downPayment, String creditScore, String insuranceNo){
-     
+    }
+
+    private void addNewCustomerInfo(String SSN,  String driverLicense,  String dateOfBirth, String phoneNumber, String firstName, String lastName, String customerAddress, Float downPayment, String creditScore, String insuranceNo){
         try{
             Connection conn = DriverManager.getConnection(driver.getConnection());
             System.out.println("Connection Established.");
@@ -67,5 +64,77 @@ public class customerInformationSQL {
         catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+    public void getCustomerIDHelper(){
+
+    }
+
+    /*method that finds the ID of the customer and sets it to a static string so that it
+     * can be used to get the customer information to be returned and then fill in textfields 
+     * on the buy vehicle page
+    */
+
+    //this method is not getting the customer ID correctly and needs to be fixed
+    public String getCustomerID(){ 
+        try{
+            Connection conn = DriverManager.getConnection(driver.getConnection());
+            System.out.println("Connection Established.");
+            String customerSSN = "123-45-6789";
+
+            String customerIDforBuying = "SELECT customerID FROM customer where SSN = ?";
+            PreparedStatement customerIDbySSN = conn.prepareStatement(customerIDforBuying);
+            customerIDbySSN.setString(1, customerSSN);
+            ResultSet customerIDResult = customerIDbySSN.executeQuery();
+
+            if(customerIDResult.next()){
+                System.out.println("The if statement was entered");
+                customerID = customerIDResult.getString("customerID");
+                System.out.println(customerID);
+                return customerID;
+            }
+            
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            System.out.println("Customer ID couldnt be found");
+        }
+        return null;
+    }
+
+    public String[] getInformationForBuyingPage(){
+        try{
+
+            String[] customerInfoHolder = new String[11];
+
+            Connection conn = DriverManager.getConnection(driver.getConnection());
+            System.out.println("Connection Established.");
+
+            String customerInfo = "SELECT * FROM customer where customerID = " + customerID;
+
+            PreparedStatement customerInfoQuery = conn.prepareStatement(customerInfo);
+            ResultSet customerInfoResult = customerInfoQuery.executeQuery();
+
+            if(customerInfoResult.next()){
+                    customerInfoHolder[0] = customerInfoResult.getString("SSN");
+                    customerInfoHolder[1] = customerInfoResult.getString("driversLicense");
+                    customerInfoHolder[2] = customerInfoResult.getString("dateOfBirth");
+                    customerInfoHolder[3] = customerInfoResult.getString("phoneNumber");
+                    customerInfoHolder[4] = customerInfoResult.getString("firstName");
+                    customerInfoHolder[5] = customerInfoResult.getString("lastName");
+                    customerInfoHolder[6] = customerInfoResult.getString("customerAddress");
+                    customerInfoHolder[7] = Integer.toString(customerInfoResult.getInt("downPayment"));
+                    customerInfoHolder[8] = customerInfoResult.getString("creditScore");
+                    customerInfoHolder[9] = customerInfoResult.getString("insuranceNo");
+                    customerInfoHolder[10] = customerInfoResult.getString("paymentType");
+
+                return customerInfoHolder;
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        return null;
     }
 }

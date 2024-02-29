@@ -20,6 +20,7 @@ package org.dealership.controllerClasses;
 import java.io.IOException;
 
 import org.dealership.driverClass;
+import org.dealership.backend.customerInformationSQL;
 import org.dealership.backend.vehicleInformationSQL;
 
 import javafx.event.ActionEvent;
@@ -29,6 +30,7 @@ import javafx.scene.control.TextField;
 public class VehicleTradeInInformationPanelController {
 
     driverClass driver = new driverClass();
+    customerInformationSQL customer = new customerInformationSQL();
 
     @FXML
     private TextField TradeInVehiclTransmission;
@@ -58,7 +60,7 @@ public class VehicleTradeInInformationPanelController {
     private TextField TradeInVehicleYear;
 
     @FXML
-    void EnterTradeInVehicleInfo(ActionEvent event) {
+    void EnterTradeInVehicleInfo(ActionEvent event) throws IOException {
         String tradeInTransmission = TradeInVehiclTransmission.getText();
         String tradeInColor = TradeInVehicleColor.getText();
         String tradeInMake = TradeInVehicleMake.getText();
@@ -73,7 +75,7 @@ public class VehicleTradeInInformationPanelController {
 
         vehicleInformationSQL tradeIn = new vehicleInformationSQL();
         tradeIn.addTradeInVehicleInfoHelper(tradeInTransmission, tradeInColor, tradeInMake, tradeInMiles, tradeInModel, tradeInVIN, tradeInVerification, tradeInYear, tradeInType);
-
+        driver.changeScene("CustomerBuyingVehiclePanel.fxml");
     }
 
     @FXML
@@ -81,5 +83,9 @@ public class VehicleTradeInInformationPanelController {
         driver.changeScene("EmployeeOptionsPanel.fxml");
     }
 
-    
+    @FXML
+    void TestButtonToChangeScene(ActionEvent event) throws IOException {
+        driver.changeScene("CustomerBuyingVehiclePanel.fxml");
+    }
+
 }

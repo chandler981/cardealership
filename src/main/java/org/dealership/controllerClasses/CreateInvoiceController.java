@@ -48,6 +48,11 @@ public class CreateInvoiceController {
     private TextField PurchaseDateInvoice;
 
     @FXML
+    void generateInvoiceButton(ActionEvent event) {
+
+    }
+
+    @FXML
     void GoBackToEmpOptions(ActionEvent event) throws IOException {
         driver.changeScene("EmployeeOptionsPanel.fxml");
     }

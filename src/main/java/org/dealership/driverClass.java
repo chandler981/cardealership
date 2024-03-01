@@ -38,7 +38,7 @@ public class driverClass extends Application{
             try{
                 stage = primaryStage;
                 Parent root = FXMLLoader.load((getClass().getResource("/fxmlFiles/LoginScreenPanel.fxml")));
-                Scene newScene = new Scene(root, 600, 400);
+                Scene newScene = new Scene(root, 750, 530);
                 primaryStage.setScene(newScene);
                 primaryStage.show();
             }

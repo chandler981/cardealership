@@ -17,10 +17,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dealership.controllerClasses.RecordCustomerInfoPanelController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0" prefWidth="749.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dealership.controllerClasses.RecordCustomerInfoPanelController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#90b882" height="92.0" stroke="#90b882" strokeType="INSIDE" width="600.0" />
-      <Text layoutX="169.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Record Customer Information" textAlignment="CENTER">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#90b882" height="92.0" stroke="#90b882" strokeType="INSIDE" width="749.0" />
+      <Text layoutX="233.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Record Customer Information" textAlignment="CENTER">
          <font>
             <Font size="20.0" />
          </font>
@@ -43,8 +43,8 @@
       <Text layoutX="431.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SSN " />
       <Text layoutX="431.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number" />
       <Text layoutX="431.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance Number" />
-      <Button layoutX="38.0" layoutY="346.0" mnemonicParsing="false" onAction="#EnterCustomerInfo" text="Enter Info" />
-      <Button layoutX="529.0" layoutY="346.0" mnemonicParsing="false" onAction="#GoBackToEmpOptions" text="Back" />
-      <Button layoutX="143.0" layoutY="346.0" mnemonicParsing="false" onAction="#TradeInVehicle" text="testing" />
+      <Button layoutX="330.0" layoutY="312.0" mnemonicParsing="false" onAction="#EnterCustomerInfo" text="Enter Info" />
+      <Button layoutX="694.0" layoutY="492.0" mnemonicParsing="false" onAction="#GoBackToEmpOptions" text="Back" />
+      <Button layoutX="628.0" layoutY="492.0" mnemonicParsing="false" onAction="#TradeInVehicle" text="testing" />
    </children>
 </AnchorPane>

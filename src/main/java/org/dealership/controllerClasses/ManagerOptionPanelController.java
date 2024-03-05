@@ -44,6 +44,11 @@ public class ManagerOptionPanelController {
     void UpdateEmpInfoPage(ActionEvent event) throws IOException {
         driver.changeScene("UpdateEmployeeInfoPanel.fxml");
     }
+
+    @FXML
+    void WeeklyDealsPage(ActionEvent event) throws IOException {
+        driver.changeScene("WeeklyDealsPanel.fxml");
+    }
     
     @FXML
     void SignOutButton(ActionEvent event) throws IOException {

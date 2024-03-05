@@ -28,5 +28,6 @@
       <Button layoutX="484.0" layoutY="138.0" mnemonicParsing="false" onAction="#CalculateCommissionPage" prefHeight="74.0" prefWidth="98.0" text="Calculate Commission" textAlignment="CENTER" wrapText="true" />
       <Button layoutX="177.0" layoutY="138.0" mnemonicParsing="false" onAction="#GoToRecordInformationPage" prefHeight="74.0" prefWidth="98.0" text="Record Vehicle Information" textAlignment="CENTER" wrapText="true" />
       <Button layoutX="629.0" layoutY="138.0" mnemonicParsing="false" onAction="#SignOutButton" prefHeight="74.0" prefWidth="98.0" text="Sign Out" />
+      <Button layoutX="337.0" layoutY="254.0" mnemonicParsing="false" onAction="#WeeklyDealsPage" prefHeight="74.0" prefWidth="98.0" text="Make Weekly Deals" textAlignment="CENTER" wrapText="true" />
    </children>
 </AnchorPane>

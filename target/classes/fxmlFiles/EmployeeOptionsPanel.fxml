@@ -23,9 +23,8 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Button layoutX="248.0" layoutY="122.0" mnemonicParsing="false" onAction="#SearchVehicleInfo" prefHeight="84.0" prefWidth="93.0" text="Search Vehicle Information" textAlignment="CENTER" wrapText="true" />
-      <Button layoutX="409.0" layoutY="122.0" mnemonicParsing="false" onAction="#WeeklyDiscounts" prefHeight="84.0" prefWidth="93.0" text="Weekly Deals" textAlignment="CENTER" wrapText="true" />
-      <Button layoutX="82.0" layoutY="122.0" mnemonicParsing="false" onAction="#BuyVehicle" prefHeight="84.0" prefWidth="93.0" text="Buy Vehicle" textAlignment="CENTER" wrapText="true" />
-      <Button layoutX="574.0" layoutY="122.0" mnemonicParsing="false" onAction="#SignOut" prefHeight="84.0" prefWidth="93.0" text="Sign Out" />
+      <Button layoutX="328.0" layoutY="132.0" mnemonicParsing="false" onAction="#SearchVehicleInfo" prefHeight="84.0" prefWidth="93.0" text="Search Vehicle Information" textAlignment="CENTER" wrapText="true" />
+      <Button layoutX="150.0" layoutY="132.0" mnemonicParsing="false" onAction="#BuyVehicle" prefHeight="84.0" prefWidth="93.0" text="Buy Vehicle" textAlignment="CENTER" wrapText="true" />
+      <Button layoutX="526.0" layoutY="132.0" mnemonicParsing="false" onAction="#SignOut" prefHeight="84.0" prefWidth="93.0" text="Sign Out" />
    </children>
 </AnchorPane>

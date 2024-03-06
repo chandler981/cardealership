@@ -12,6 +12,6 @@
 
 package org.dealership.Entities;
 
-public class customer {
+public class Customer{
     
 }

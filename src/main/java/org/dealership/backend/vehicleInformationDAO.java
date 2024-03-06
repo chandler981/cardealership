@@ -18,13 +18,20 @@ package org.dealership.backend;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.dealership.driverClass;
+import org.dealership.Entities.Vehicle;
+import org.dealership.controllerClasses.VehicleInfoFromSearchController;
 
-public class vehicleInformationSQL {
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
+public class vehicleInformationDAO {
     driverClass driver = new driverClass();
-    
+    public static ObservableList<Vehicle> resultHolder = FXCollections.observableArrayList();
 
     public void addNewVehicleInfoHelper(String vehicleColor, String vehicleMake, int vehicleMileage, String vehicleModel, String vehicleTransmission, String vehicleType, String vehicleVIN, String vehicleYear, String vehicleCondition){
         addNewVehicleInfo(vehicleColor, vehicleMake, vehicleMileage, vehicleModel, vehicleTransmission, vehicleType, vehicleVIN, vehicleYear, vehicleCondition);
@@ -84,7 +91,7 @@ public class vehicleInformationSQL {
             //this represents a way of executing something in sql through java
             PreparedStatement stmt = conn.prepareStatement(insertToTable);
 
-                        //these are essentially prepping the statement that was created with the variables that were created with the gui that have information
+            //these are essentially prepping the statement that was created with the variables that were created with the gui that have information
             stmt.setString(1, vehicleVIN);
             stmt.setString(2, vehicleMake);
             stmt.setString(3, vehicleModel);
@@ -112,5 +119,50 @@ public class vehicleInformationSQL {
         }
 
     }
+
+    public ObservableList<Vehicle> vehicleSearchResultHelper(String query){
+        return vehicleSearchResult(query);
+    }
+
+    private ObservableList<Vehicle> vehicleSearchResult(String query){
+        //ObservableList<vehicle> resultHolder = FXCollections.observableArrayList();
+        try{
+            Vehicle vehicleView;
+            //this allows the user to connect and interact with the sql database
+            Connection conn = DriverManager.getConnection(driver.getConnection());
+            System.out.println("Connection Established.");
+
+            PreparedStatement vehicleInfoQuery = conn.prepareStatement(query);
+            ResultSet vehicleInfoResult = vehicleInfoQuery.executeQuery();
+
+            while(vehicleInfoResult.next()){
+                String vehMake = vehicleInfoResult.getString("vehicleMake");
+                String vehModel = vehicleInfoResult.getString("vehicleModel");
+                String vehType = vehicleInfoResult.getString("vehicleType");
+                String vehColor = vehicleInfoResult.getString("vehicleColor");
+                String vehYear = vehicleInfoResult.getString("vehicleYear");
+                String vehTransmission = vehicleInfoResult.getString("vehicleTransmission");
+                String vehMiles = vehicleInfoResult.getString("vehicleMileage");
+                //String vehDiscount = vehicleInfoResult.getString(); 
+                String vehCondition = vehicleInfoResult.getString("vehicleCondition");
+                String vehPrice = vehicleInfoResult.getString("vehicleSalePrice");
+                String vehAvail = vehicleInfoResult.getString("vehicleAvailability");
+
+                vehicleView = new Vehicle(vehMake, vehModel, vehType, vehColor, vehYear, vehTransmission, vehMiles, vehCondition, vehPrice, vehAvail);
+                resultHolder.add(vehicleView);
+            }
+
+            vehicleInfoQuery.close();
+            System.out.println("Statement closed.");
+            vehicleInfoResult.close();
+            System.out.println("Result closed.");
+            conn.close();
+            System.out.println("Connection closed.");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return resultHolder;
+    } 
     
 }

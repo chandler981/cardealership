@@ -37,9 +37,10 @@ public class driverClass extends Application{
         try{
             try{
                 stage = primaryStage;
-                Parent root = FXMLLoader.load((getClass().getResource("/fxmlFiles/LoginScreenPanel.fxml")));
+                Parent root = FXMLLoader.load((getClass().getResource("/fxmlFiles/SearchVehicleInfoResultPanel.fxml")));
                 Scene newScene = new Scene(root, 750, 530);
                 primaryStage.setScene(newScene);
+                primaryStage.setResizable(true);
                 primaryStage.show();
             }
             catch(Exception e){

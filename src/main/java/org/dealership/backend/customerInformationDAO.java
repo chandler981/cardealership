@@ -23,7 +23,7 @@ import java.sql.SQLException;
 
 import org.dealership.driverClass;
 
-public class customerInformationSQL {
+public class customerInformationDAO {
     driverClass driver = new driverClass();
     public static String SSNforInfo;
     public static String customerID;

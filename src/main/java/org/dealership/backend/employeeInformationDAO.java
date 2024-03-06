@@ -30,7 +30,7 @@ import org.dealership.driverClass;
 import org.dealership.Entities.employee;
 import org.dealership.controllerClasses.LoginScreenController;
 
-public class employeeInformationSQL{
+public class employeeInformationDAO{
 
     // this line is for creating a string that will allow the bridge connection of java and sql and is used globally
     // the first part is referring to the driver that allows java to talk to the sql server

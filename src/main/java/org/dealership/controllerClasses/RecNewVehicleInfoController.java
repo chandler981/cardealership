@@ -20,7 +20,7 @@ package org.dealership.controllerClasses;
 import java.io.IOException;
 
 import org.dealership.driverClass;
-import org.dealership.backend.vehicleInformationSQL;
+import org.dealership.backend.vehicleInformationDAO;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -69,7 +69,7 @@ public class RecNewVehicleInfoController {
         String vehicleYear = CarYearTF.getText();
         String vehicleCondition = VehicleConditionTF.getText();
 
-        vehicleInformationSQL vehicle = new vehicleInformationSQL();
+        vehicleInformationDAO vehicle = new vehicleInformationDAO();
 
         vehicle.addNewVehicleInfoHelper(vehicleColor, vehicleMake, vehicleMileage, vehicleModel, vehicleTransmission, vehicleType, vehicleVIN, vehicleYear, vehicleCondition);
     }

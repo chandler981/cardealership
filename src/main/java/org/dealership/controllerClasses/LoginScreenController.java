@@ -18,7 +18,7 @@ import java.io.IOException;
 
 import org.dealership.driverClass;
 import org.dealership.Entities.employee;
-import org.dealership.backend.employeeInformationSQL;
+import org.dealership.backend.employeeInformationDAO;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,7 +38,7 @@ public class LoginScreenController {
 
     @FXML
     void checkEmployeeInfo(ActionEvent event) throws IOException { //action event method for the button on the login screen
-        employeeInformationSQL employeeLoginCheck = new employeeInformationSQL();
+        employeeInformationDAO employeeLoginCheck = new employeeInformationDAO();
         String password = employeePassword.getText();
         String username = employeeUsername.getText();
         employeeLoginCheck.checkLogin(username, password);

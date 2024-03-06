@@ -1,27 +1,25 @@
-        /*
-        * Author:       Chandler Ward
-        * Written:      2 / 13 / 2024
-        * Last Updated: 2 / 13 / 2024
-        * 
-        * Compilation:  javac driverClass.java
-        * Execution:    java driverClass
-        * 
-        * This file is for allowing the employee
-        * to enter the customers information to be stored
-        * in the database to be used at time of purchase
-        * or just for records.
-        *  
-        * % java driverClass
-        */
+/*
+* Author:       Chandler Ward
+* Written:      2 / 13 / 2024
+* Last Updated: 2 / 13 / 2024
+* 
+* Compilation:  javac driverClass.java
+* Execution:    java driverClass
+* 
+* This file is for allowing the employee
+* to enter the customers information to be stored
+* in the database to be used at time of purchase
+* or just for records.
+*  
+* % java driverClass
+*/
 
 package org.dealership.controllerClasses;
 
 import java.io.IOException;
 
 import org.dealership.driverClass;
-import org.dealership.Entities.customer;
-import org.dealership.backend.customerInformationSQL;
-import org.dealership.backend.vehicleInformationSQL;
+import org.dealership.backend.customerInformationDAO;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -77,7 +75,7 @@ public class RecordCustomerInfoPanelController {
         String lastName = names[1]; 
 
         // sending to database
-        customerInformationSQL customer = new customerInformationSQL();
+        customerInformationDAO customer = new customerInformationDAO();
         customer.addNewCustomerInfoHelper(SSN,  driverLicense,  dateOfBirth, phoneNumber,  firstName,  lastName,  customerAddress, downPayment, creditScore, insuranceNo);
         driver.changeScene("VehicleTradeInInformationPanel.fxml");
     }

@@ -19,7 +19,7 @@
  
  import org.dealership.driverClass;
  import org.dealership.Entities.employee;
- import org.dealership.backend.employeeInformationSQL;
+ import org.dealership.backend.employeeInformationDAO;
  
  import javafx.event.ActionEvent;
  import javafx.fxml.FXML;
@@ -29,7 +29,7 @@
      
      driverClass driver = new driverClass();
      employee emp = new employee();
-     employeeInformationSQL empSQL = new employeeInformationSQL();
+     employeeInformationDAO empSQL = new employeeInformationDAO();
  
      @FXML
      private TextField comissionAmnt;

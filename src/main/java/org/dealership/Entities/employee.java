@@ -15,7 +15,7 @@
 
  package org.dealership.Entities;
 
- import org.dealership.backend.employeeInformationSQL;
+ import org.dealership.backend.employeeInformationDAO;
  
  public class employee {
  
@@ -36,7 +36,7 @@
 
     private double employeePaymentAmmount;
 
-    employeeInformationSQL empSQL = new employeeInformationSQL();
+    employeeInformationDAO empSQL = new employeeInformationDAO();
 
     private void updateEmployeeInformation(){
 

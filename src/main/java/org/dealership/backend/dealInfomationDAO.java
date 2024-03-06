@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 
 import org.dealership.driverClass;
 
-public class dealInfomationSQL {
+public class dealInfomationDAO {
 
 
     driverClass driver = new driverClass();

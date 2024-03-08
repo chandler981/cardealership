@@ -24,10 +24,11 @@ public class Vehicle{
     public String VehicleCondition; 
     public String VehiclePrice;
     public String VehicleAvail;
+    public Float VehicleDiscount;
 
     public Vehicle(String vehMake, String vehModel, String vehType, String vehColor, String vehYear, 
                     String vehTransmission, String vehMiles, String vehCondition, String vehPrice,
-                    String vehAvail){
+                    String vehAvail, Float vehDisc){
         this.VehicleMake = (vehMake);
         this.VehicleModel = (vehModel);
         this.VehicleType = (vehType);
@@ -38,6 +39,7 @@ public class Vehicle{
         this.VehicleCondition =  (vehCondition);
         this.VehiclePrice =  (vehPrice);
         this.VehicleAvail =  (vehAvail);
+        this.VehicleDiscount = (vehDisc);
     }
 
     public String getVehicleMake(){
@@ -78,6 +80,10 @@ public class Vehicle{
 
     public String getVehicleAvail(){
         return VehicleAvail;
+    }
+
+    public Float getVehicleDiscount(){
+        return VehicleDiscount;
     }
 
 }

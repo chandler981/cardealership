@@ -86,11 +86,18 @@ VALUES
     ('5XYZT3LB7HG123458', 'Hyundai', 'Santa Fe', 'suv', 'White', '2021', 'Automatic', 15000, 'Like New', 23000.00, 'In Stock');
 
 
+--@block
+insert into vehicle (vehicleVIN, vehicleMake, vehicleModel, vehicleType, vehicleColor, vehicleYear, vehicleTransmission, vehicleMileage, vehicleCondition, vehicleSalePrice, vehicleAvailability)
+VALUE('1', '1', '1', '1', '1','1','1','1','1','1','1');
+
 --@block 
 select vehicleMake from vehicle where vehicleVIN = '1HGCM82633A123456'
 
 --@block 
-select * from vehicle;
+select * from vehicle where vehicleMake = 'Honda' and vehicleModel = 'accord' and vehicleType = 'sedan' and vehicleColor = 'blue' and vehicleYear = '2020' and vehicleMileage = 30000;
+
+--@block
+select * from vehicle
 
 --@block
 create table customer(
@@ -139,9 +146,12 @@ VALUES
 --@block
 drop table deal
 
---@block
-Update deal 
-SET vehicleType = 'SUV' , discount = 0.20 
+--@block 
+truncate table deal
 
 --@block
-select * from deal
+Update deal 
+SET vehicleType = 'sedan' , discount = 0.20 
+
+--@block
+select discount from deal where vehicleType = 'sedan'

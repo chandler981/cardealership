@@ -70,12 +70,6 @@ public class customerInformationDAO {
 
     }
 
-    /*method that finds the ID of the customer and sets it to a static string so that it
-     * can be used to get the customer information to be returned and then fill in textfields 
-     * on the buy vehicle page
-    */
-
-    //this method is not getting the customer ID correctly and needs to be fixed
     public String getCustomerID(){ 
         try{
             Connection conn = DriverManager.getConnection(driver.getConnection());

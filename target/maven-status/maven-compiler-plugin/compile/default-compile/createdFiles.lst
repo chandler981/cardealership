@@ -17,6 +17,7 @@ org\dealership\Entities\invoice.class
 org\dealership\Entities\CarDealership.class
 org\dealership\Entities\Vehicle.class
 org\dealership\controllerClasses\CalcEmpCommissionController.class
+org\dealership\backend\dealInfomationDAO.class
 org\dealership\controllerClasses\VehicleTradeInInformationPanelController.class
 org\dealership\controllerClasses\OrderVehiclePageController.class
 org\dealership\Entities\employee.class

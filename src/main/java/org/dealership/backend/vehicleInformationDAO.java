@@ -19,12 +19,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.dealership.driverClass;
 import org.dealership.Entities.Vehicle;
-import org.dealership.controllerClasses.VehicleInfoFromSearchController;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -120,14 +117,14 @@ public class vehicleInformationDAO {
 
     }
 
-    public ObservableList<Vehicle> vehicleSearchResultHelper(String query){
-        return vehicleSearchResult(query);
+    public ObservableList<Vehicle> vehicleSearchResultHelper(String query, String dealQuery){
+        return vehicleSearchResult(query, dealQuery);
     }
 
-    private ObservableList<Vehicle> vehicleSearchResult(String query){
-        //ObservableList<vehicle> resultHolder = FXCollections.observableArrayList();
+    private ObservableList<Vehicle> vehicleSearchResult(String query, String dealQuery){
         try{
             Vehicle vehicleView;
+
             //this allows the user to connect and interact with the sql database
             Connection conn = DriverManager.getConnection(driver.getConnection());
             System.out.println("Connection Established.");
@@ -135,7 +132,11 @@ public class vehicleInformationDAO {
             PreparedStatement vehicleInfoQuery = conn.prepareStatement(query);
             ResultSet vehicleInfoResult = vehicleInfoQuery.executeQuery();
 
-            while(vehicleInfoResult.next()){
+            PreparedStatement vehicleDealQuery = conn.prepareStatement(dealQuery);
+            ResultSet vehicleDealResult = vehicleDealQuery.executeQuery();
+
+            while(vehicleInfoResult.next())
+            {
                 String vehMake = vehicleInfoResult.getString("vehicleMake");
                 String vehModel = vehicleInfoResult.getString("vehicleModel");
                 String vehType = vehicleInfoResult.getString("vehicleType");
@@ -143,13 +144,25 @@ public class vehicleInformationDAO {
                 String vehYear = vehicleInfoResult.getString("vehicleYear");
                 String vehTransmission = vehicleInfoResult.getString("vehicleTransmission");
                 String vehMiles = vehicleInfoResult.getString("vehicleMileage");
-                //String vehDiscount = vehicleInfoResult.getString(); 
                 String vehCondition = vehicleInfoResult.getString("vehicleCondition");
                 String vehPrice = vehicleInfoResult.getString("vehicleSalePrice");
                 String vehAvail = vehicleInfoResult.getString("vehicleAvailability");
-
-                vehicleView = new Vehicle(vehMake, vehModel, vehType, vehColor, vehYear, vehTransmission, vehMiles, vehCondition, vehPrice, vehAvail);
-                resultHolder.add(vehicleView);
+                
+                if(vehicleDealResult.next())
+                {
+                    Float vehDisc = Float.parseFloat(vehicleDealResult.getString("discount"));
+                    System.out.println("entered the if");
+                    vehicleView = new Vehicle(vehMake, vehModel, vehType, vehColor, vehYear, vehTransmission, vehMiles, vehCondition, vehPrice, vehAvail, vehDisc);
+                    System.out.println("discount");
+                    resultHolder.add(vehicleView);
+                }
+                else
+                {
+                    vehicleView = new Vehicle(vehMake, vehModel, vehType, vehColor, vehYear, vehTransmission, vehMiles, vehCondition, vehPrice, vehAvail, (float) 0);
+                    System.out.println("discount not here");
+                    resultHolder.add(vehicleView);
+                    
+                }
             }
 
             vehicleInfoQuery.close();

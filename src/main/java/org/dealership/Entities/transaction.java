@@ -12,6 +12,6 @@
 
 package org.dealership.Entities;
 
-public class transaction {
+public class Transaction {
     
 }

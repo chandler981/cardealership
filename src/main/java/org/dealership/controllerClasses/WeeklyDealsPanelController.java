@@ -17,9 +17,7 @@ package org.dealership.controllerClasses;
 
 import java.io.IOException;
 import org.dealership.driverClass;
-import org.dealership.Entities.Vehicle;
 import org.dealership.backend.dealInfomationDAO;
-import org.dealership.backend.vehicleInformationDAO;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

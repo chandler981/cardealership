@@ -19,7 +19,7 @@
  import java.io.IOException;
  
  import org.dealership.driverClass;
-import org.dealership.Entities.employee;
+import org.dealership.Entities.Employee;
 
 import javafx.event.ActionEvent;
  import javafx.fxml.FXML;
@@ -29,7 +29,7 @@ import javafx.event.ActionEvent;
  public class OrderVehiclePageController {
  
     driverClass driver = new driverClass();
-    employee currentEmployee = new employee();
+    Employee currentEmployee = new Employee();
  
      @FXML
      private TextField VehicleColorOrder;

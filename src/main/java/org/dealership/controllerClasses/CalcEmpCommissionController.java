@@ -18,8 +18,8 @@
  import java.io.IOException;
  
  import org.dealership.driverClass;
- import org.dealership.Entities.employee;
- import org.dealership.backend.employeeInformationDAO;
+ import org.dealership.Entities.Employee;
+ import org.dealership.backend.EmployeeInformationDAO;
  
  import javafx.event.ActionEvent;
  import javafx.fxml.FXML;
@@ -28,8 +28,8 @@
  public class CalcEmpCommissionController {
      
      driverClass driver = new driverClass();
-     employee emp = new employee();
-     employeeInformationDAO empSQL = new employeeInformationDAO();
+     Employee emp = new Employee();
+     EmployeeInformationDAO empSQL = new EmployeeInformationDAO();
  
      @FXML
      private TextField comissionAmnt;

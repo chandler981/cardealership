@@ -17,7 +17,7 @@ package org.dealership.controllerClasses;
 
 import java.io.IOException;
 import org.dealership.driverClass;
-import org.dealership.backend.dealInfomationDAO;
+import org.dealership.backend.DealInfomationDAO;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,7 +45,7 @@ public class WeeklyDealsPanelController {
        //standardized input so check for uppercase of vehicle Type
        vehicleType=vehicleType.toUpperCase();
 
-       dealInfomationDAO deal = new dealInfomationDAO();
+       DealInfomationDAO deal = new DealInfomationDAO();
        deal.discountingHelp(vehicleType, discount);
    }
 

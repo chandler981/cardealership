@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 
 import org.dealership.driverClass;
 import org.dealership.Entities.Vehicle;
-import org.dealership.backend.vehicleInformationDAO;
+import org.dealership.backend.VehicleInformationDAO;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -59,7 +59,7 @@ public class VehicleInfoFromSearchController implements Initializable{
     private TableView<Vehicle> tableShowingResults;
     
     driverClass driver = new driverClass();
-    vehicleInformationDAO vehicleTest = new vehicleInformationDAO();
+    VehicleInformationDAO vehicleTest = new VehicleInformationDAO();
     ObservableList<Vehicle> results = FXCollections.observableArrayList();
     ObservableList<Vehicle> dealResults = FXCollections.observableArrayList();
     String queryUsed;

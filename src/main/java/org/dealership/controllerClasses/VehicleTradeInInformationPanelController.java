@@ -20,8 +20,8 @@ package org.dealership.controllerClasses;
 import java.io.IOException;
 
 import org.dealership.driverClass;
-import org.dealership.backend.customerInformationDAO;
-import org.dealership.backend.vehicleInformationDAO;
+import org.dealership.backend.CustomerInformationDAO;
+import org.dealership.backend.VehicleInformationDAO;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,7 +30,7 @@ import javafx.scene.control.TextField;
 public class VehicleTradeInInformationPanelController {
 
     driverClass driver = new driverClass();
-    customerInformationDAO customer = new customerInformationDAO();
+    CustomerInformationDAO customer = new CustomerInformationDAO();
 
     @FXML
     private TextField TradeInVehiclTransmission;
@@ -73,7 +73,7 @@ public class VehicleTradeInInformationPanelController {
 
         //tradeInTrans, tradeInColor, tradeInMake, tradeInMiles, tradeInModel, tradeInVIN, tradeInVerif, tradeInYear
 
-        vehicleInformationDAO tradeIn = new vehicleInformationDAO();
+        VehicleInformationDAO tradeIn = new VehicleInformationDAO();
         tradeIn.addTradeInVehicleInfoHelper(tradeInTransmission, tradeInColor, tradeInMake, tradeInMiles, tradeInModel, tradeInVIN, tradeInVerification, tradeInYear, tradeInType);
         driver.changeScene("CustomerBuyingVehiclePanel.fxml");
     }

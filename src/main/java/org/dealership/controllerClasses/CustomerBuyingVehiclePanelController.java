@@ -19,7 +19,7 @@ package org.dealership.controllerClasses;
 import java.io.IOException;
 
 import org.dealership.driverClass;
-import org.dealership.backend.customerInformationDAO;
+import org.dealership.backend.CustomerInformationDAO;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,7 +30,7 @@ import javafx.scene.control.TextField;
 public class CustomerBuyingVehiclePanelController {
 
     driverClass driver = new driverClass();
-    customerInformationDAO customer = new customerInformationDAO();
+    CustomerInformationDAO customer = new CustomerInformationDAO();
 
     @FXML
     private TextField CustomerAddress;

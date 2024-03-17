@@ -16,6 +16,6 @@
 
 package org.dealership.backend;
 
-public class invoiceDAO {
+public class InvoiceDAO {
     
 }

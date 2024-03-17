@@ -27,10 +27,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.dealership.driverClass;
-import org.dealership.Entities.employee;
+import org.dealership.Entities.Employee;
 import org.dealership.controllerClasses.LoginScreenController;
 
-public class employeeInformationDAO{
+public class EmployeeInformationDAO{
 
     // this line is for creating a string that will allow the bridge connection of java and sql and is used globally
     // the first part is referring to the driver that allows java to talk to the sql server
@@ -64,7 +64,7 @@ public class employeeInformationDAO{
     
     private void checkLoginHelper(String ID, String password) throws IOException{ 
         LoginScreenController login = new LoginScreenController();
-        employee currentEmployee = new employee();
+        Employee currentEmployee = new Employee();
         try{
             //this allows the user to connect and interact with the sql database
             Connection conn = DriverManager.getConnection(driver.getConnection());
@@ -131,7 +131,7 @@ public class employeeInformationDAO{
     }
 
     private void inputNewCommissionAmnt(String empID) throws IOException{  //method that actually pushes the new commission ammount to the database
-        employee emp = new employee();
+        Employee emp = new Employee();
         
         try{    
 

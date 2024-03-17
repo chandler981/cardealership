@@ -19,7 +19,7 @@ package org.dealership.controllerClasses;
 import java.io.IOException;
 
 import org.dealership.driverClass;
-import org.dealership.backend.customerInformationDAO;
+import org.dealership.backend.CustomerInformationDAO;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -75,7 +75,7 @@ public class RecordCustomerInfoPanelController {
         String lastName = names[1]; 
 
         // sending to database
-        customerInformationDAO customer = new customerInformationDAO();
+        CustomerInformationDAO customer = new CustomerInformationDAO();
         customer.addNewCustomerInfoHelper(SSN,  driverLicense,  dateOfBirth, phoneNumber,  firstName,  lastName,  customerAddress, downPayment, creditScore, insuranceNo);
         driver.changeScene("VehicleTradeInInformationPanel.fxml");
     }

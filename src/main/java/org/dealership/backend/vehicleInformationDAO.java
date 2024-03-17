@@ -26,7 +26,7 @@ import org.dealership.Entities.Vehicle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class vehicleInformationDAO {
+public class VehicleInformationDAO {
     driverClass driver = new driverClass();
     public static ObservableList<Vehicle> resultHolder = FXCollections.observableArrayList();
 

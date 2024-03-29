@@ -38,8 +38,12 @@
 
     EmployeeInformationDAO empSQL = new EmployeeInformationDAO();
 
-    private void updateEmployeeInformation(){
+    public void updateEMployeeInformationHelper(String EmpAdd, String EmpBankNum, String EmpID, String EmpPhoneNumChange, String EmpSSNChange){
+        updateEmployeeInformation(EmpAdd, EmpBankNum, EmpID, EmpPhoneNumChange, EmpSSNChange);
+    }
 
+    private void updateEmployeeInformation(String EmpAdd, String EmpBankNum, String EmpID, String EmpPhoneNumChange, String EmpSSNChange){
+        empSQL.updateEmployeeInformationHelper(EmpAdd, EmpBankNum, EmpID, EmpPhoneNumChange, EmpSSNChange);
     }
 
     private void createEmployeeID(){

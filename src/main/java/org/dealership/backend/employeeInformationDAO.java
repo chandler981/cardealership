@@ -156,5 +156,48 @@ public class EmployeeInformationDAO{
         }
     }
 
+    public void updateEmployeeInformationHelper(String EmpAdd, String EmpBankNum, String EmpID, String EmpPhoneNumChange, String EmpSSNChange){
+        updateEmployeeInformation(EmpAdd, EmpBankNum, EmpID, EmpPhoneNumChange, EmpSSNChange);
+    }
+
+    private void updateEmployeeInformation(String EmpAdd, String EmpBankNum, String EmpID, String EmpPhoneNumChange, String EmpSSNChange){
+        try{
+            Connection conn = DriverManager.getConnection(driver.getConnection());
+            System.out.println("Connection Established.");
+
+            String changeInfo = "UPDATE employee " + 
+                                "SET " + 
+                                "employeeAddress = CASE WHEN ? <> '' THEN ? ELSE employeeAddress END, " +
+                                "bankNumber = CASE WHEN ? <> '' THEN ? ELSE bankNumber END, " +
+                                "phoneNumber = CASE WHEN ? <> '' THEN ? ELSE phoneNumber END, " +
+                                "SSN = CASE WHEN ? <> '' THEN ? ELSE SSN END " +
+                                "WHERE employeeID = ?";
+
+            PreparedStatement statement = conn.prepareStatement(changeInfo);
+
+            // Setting parameter values
+            statement.setString(1, EmpAdd);
+            statement.setString(2, EmpAdd);
+            statement.setString(3, EmpBankNum);
+            statement.setString(4, EmpBankNum);
+            statement.setString(5, EmpPhoneNumChange);
+            statement.setString(6, EmpPhoneNumChange);
+            statement.setString(7, EmpSSNChange);
+            statement.setString(8, EmpSSNChange);
+            statement.setString(9, EmpID);
+        
+            // Executing the update query
+            int rowsAffected = statement.executeUpdate();
+            
+            // Handle the result as needed
+            System.out.println("Rows affected: " + rowsAffected);
+                            
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
     
 }

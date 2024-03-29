@@ -17,6 +17,7 @@ package org.dealership.controllerClasses;
 import java.io.IOException;
 
 import org.dealership.driverClass;
+import org.dealership.Entities.Employee;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,10 +34,7 @@ public class UpdateEmployeeInfoController {
     private TextField EmpBankNumChange;
 
     @FXML
-    private TextField EmpDOBChange;
-
-    @FXML
-    private TextField EmpIDChange;
+    private TextField EmpID;
 
     @FXML
     private TextField EmpPhoneNumChange;
@@ -45,8 +43,9 @@ public class UpdateEmployeeInfoController {
     private TextField EmpSSNChange;
 
     @FXML
-    void UpdateEmployeeInfo(ActionEvent event) {
-        
+    void UpdateEmployeeInfoEnter(ActionEvent event) {
+        Employee employee = new Employee();
+        employee.updateEMployeeInformationHelper(EmpAddressChange.getText(), EmpBankNumChange.getText(), EmpID.getText(), EmpPhoneNumChange.getText(), EmpSSNChange.getText());
     }
 
     @FXML

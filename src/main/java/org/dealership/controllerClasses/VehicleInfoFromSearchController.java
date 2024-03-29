@@ -70,7 +70,7 @@ public class VehicleInfoFromSearchController implements Initializable{
             //     result = this.results.get(i);
             //     System.out.println(result.getVehicleMake());
             // }
-        }
+    }
         
     @Override
     public void initialize(URL location, ResourceBundle resources) 

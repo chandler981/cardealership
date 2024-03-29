@@ -25,19 +25,17 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <TextField fx:id="EmpIDChange" layoutX="27.0" layoutY="127.0" />
+      <TextField fx:id="EmpID" layoutX="27.0" layoutY="127.0" />
       <TextField fx:id="EmpBankNumChange" layoutX="208.0" layoutY="127.0" />
-      <TextField fx:id="EmpPhoneNumChange" layoutX="208.0" layoutY="187.0" />
+      <TextField fx:id="EmpPhoneNumChange" layoutX="27.0" layoutY="182.0" />
       <TextField fx:id="EmpSSNChange" layoutX="27.0" layoutY="297.0" />
       <TextField fx:id="EmpAddressChange" layoutX="27.0" layoutY="243.0" />
-      <TextField fx:id="EmpDOBChange" layoutX="27.0" layoutY="187.0" />
       <Text layoutX="68.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee ID" />
       <Text layoutX="223.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bank Account Number" />
-      <Text layoutX="215.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee Phone Number" />
+      <Text layoutX="33.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee Phone Number" />
       <Text layoutX="61.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee  SSN" />
       <Text layoutX="52.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee Address" />
-      <Text layoutX="38.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee  Date Of Birth" />
-      <Button layoutX="261.0" layoutY="297.0" mnemonicParsing="false" onAction="#UpdateEmployeeInfo" text="Enter" />
+      <Button layoutX="261.0" layoutY="297.0" mnemonicParsing="false" onAction="#UpdateEmployeeInfoEnter" text="Enter" />
       <Button layoutX="694.0" layoutY="492.0" mnemonicParsing="false" onAction="#goBackButton" text="Back" />
    </children>
 </AnchorPane>

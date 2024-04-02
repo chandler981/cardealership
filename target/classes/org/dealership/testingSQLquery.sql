@@ -160,3 +160,15 @@ SET vehicleType = 'sedan' , discount = 0.20
 
 --@block
 select discount from deal where vehicleType = 'sedan'
+
+
+--@block
+CREATE TABLE Invoice(
+    InvoiceNumber PRIMARY KEY auto_increment,
+    SalePrice FLOAT,
+    PurchaseTotal FLOAT,
+    PurchaseDate DATE,
+    FOREIGN KEY EmployeeID REFERENCES employee(employeeID),
+    FOREIGN KEY CustomerID REFERENCES customer(customerID),
+    FOREIGN KEY vehicleVIN REFERENCES vehicle(vehicleVIN)
+)

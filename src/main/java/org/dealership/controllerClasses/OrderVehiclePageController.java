@@ -20,13 +20,18 @@
  
  import org.dealership.driverClass;
 import org.dealership.Entities.Employee;
+import org.dealership.backend.VehicleInformationDAO;
 
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
  import javafx.fxml.FXML;
  import javafx.scene.control.ChoiceBox;
  import javafx.scene.control.TextField;
  
  public class OrderVehiclePageController {
+    ObservableList<String> orderFromOpitionList = FXCollections.observableArrayList("Manufacture", "Dealer A", "Dealer B");
  
     driverClass driver = new driverClass();
     Employee currentEmployee = new Employee();
@@ -50,11 +55,25 @@ import javafx.event.ActionEvent;
      private TextField VehicleYearOrder;
  
      @FXML
-     private ChoiceBox<?> OrderFromOptions;
+     private ChoiceBox<String> OrderFromOptions;
+
+     @FXML
+     private void initialize(){
+        OrderFromOptions.setValue("Manufacture");
+        OrderFromOptions.setItems(orderFromOpitionList);
+     }
  
      @FXML
      void OrderVehicle(ActionEvent event) {
- 
+      String OrderFromOptionsString=OrderFromOptions.toString();
+      String VehicleColor= VehicleColorOrder.getText();
+      String VehicleMake= VehicleMakeOrder.getText();
+      String VehicleModel= VehicleModelOrder.getText();
+      String VehicleTransType= VehicleTransTypeOrder.getText();
+      String VehicleType= VehicleTypeOrder.getText();
+      String VehicleYear= VehicleYearOrder.getText();
+      VehicleInformationDAO vehicle = new VehicleInformationDAO();
+      vehicle.OrderVecHelper(VehicleColor, VehicleMake, VehicleModel, VehicleTransType, VehicleType, VehicleYear, OrderFromOptionsString);
      }
  
      @FXML

@@ -19,16 +19,18 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+    import java.util.Random;
 
 import org.dealership.driverClass;
-import org.dealership.Entities.Vehicle;
+import org.dealership.Entities.vehicle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class VehicleInformationDAO {
     driverClass driver = new driverClass();
-    public static ObservableList<Vehicle> resultHolder = FXCollections.observableArrayList();
+    public static ObservableList<vehicle> resultHolder = FXCollections.observableArrayList();
+    public static vehicle orderedVecVehicle;
 
     public void addNewVehicleInfoHelper(String vehicleColor, String vehicleMake, int vehicleMileage, String vehicleModel, String vehicleTransmission, String vehicleType, String vehicleVIN, String vehicleYear, String vehicleCondition){
         addNewVehicleInfo(vehicleColor, vehicleMake, vehicleMileage, vehicleModel, vehicleTransmission, vehicleType, vehicleVIN, vehicleYear, vehicleCondition);
@@ -117,13 +119,13 @@ public class VehicleInformationDAO {
 
     }
 
-    public ObservableList<Vehicle> vehicleSearchResultHelper(String query, String dealQuery){
+    public ObservableList<vehicle> vehicleSearchResultHelper(String query, String dealQuery){
         return vehicleSearchResult(query, dealQuery);
     }
 
-    private ObservableList<Vehicle> vehicleSearchResult(String query, String dealQuery){
+    private ObservableList<vehicle> vehicleSearchResult(String query, String dealQuery){
         try{
-            Vehicle vehicleView;
+            vehicle vehicleView;
 
             //this allows the user to connect and interact with the sql database
             Connection conn = DriverManager.getConnection(driver.getConnection());
@@ -152,13 +154,13 @@ public class VehicleInformationDAO {
                 {
                     Float vehDisc = Float.parseFloat(vehicleDealResult.getString("discount"));
                     System.out.println("entered the if");
-                    vehicleView = new Vehicle(vehMake, vehModel, vehType, vehColor, vehYear, vehTransmission, vehMiles, vehCondition, vehPrice, vehAvail, vehDisc);
+                    vehicleView = new vehicle(vehMake, vehModel, vehType, vehColor, vehYear, vehTransmission, vehMiles, vehCondition, vehPrice, vehAvail, vehDisc);
                     System.out.println("discount");
                     resultHolder.add(vehicleView);
                 }
                 else
                 {
-                    vehicleView = new Vehicle(vehMake, vehModel, vehType, vehColor, vehYear, vehTransmission, vehMiles, vehCondition, vehPrice, vehAvail, (float) 0);
+                    vehicleView = new vehicle(vehMake, vehModel, vehType, vehColor, vehYear, vehTransmission, vehMiles, vehCondition, vehPrice, vehAvail, (float) 0);
                     System.out.println("discount not here");
                     resultHolder.add(vehicleView);
                     
@@ -176,6 +178,116 @@ public class VehicleInformationDAO {
             e.printStackTrace();
         }
         return resultHolder;
+    }
+    public void OrderVecHelper(String vehicleColorOrder, String vehicleMakeOrder, String vehicleModelOrder,
+    String vehicleTransTypeOrder, String vehicleTypeOrder, String vehicleYearOrder,
+    String OrderFromOptionsString){
+        OrderVec(vehicleColorOrder, vehicleMakeOrder, vehicleModelOrder, vehicleTransTypeOrder, vehicleTypeOrder, vehicleYearOrder, OrderFromOptionsString);    }
+
+    private void OrderVec(String vehicleColorOrder, String vehicleMakeOrder, String vehicleModelOrder,
+    String vehicleTransTypeOrder, String vehicleTypeOrder, String vehicleYearOrder,
+            String OrderFromOptionsString) {
+        String VecVin=generateVIN();
+        orderedVecVehicle=new vehicle(vehicleMakeOrder, vehicleModelOrder, vehicleTypeOrder, vehicleColorOrder, vehicleYearOrder,vehicleTransTypeOrder, "Ordered", "Ordered", "Ordered", "Ordered", OrderFromOptionsString);;
+        try{
+            Connection conn = DriverManager.getConnection(driver.getConnection());
+            System.out.println("Connection Established.");
+
+            String vehicleCondition = "used";
+            float vehicleSalePrice = (float) 0.0;
+            String vehicleAvailability = "Ordered";
+
+            String insertToTable = "INSERT into vehicle(vehicleVIN, vehicleMake, vehicleModel, vehicleType, vehicleColor, vehicleYear, vehicleTransmission, vehicleMileage, vehicleCondition, vehicleSalePrice, vehicleAvailability) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            PreparedStatement stmt = conn.prepareStatement(insertToTable);
+            stmt.setString(1, VecVin);
+            stmt.setString(2,vehicleMakeOrder);
+            stmt.setString(3, vehicleModelOrder);
+            stmt.setString(4, vehicleTypeOrder);
+            stmt.setString(5, vehicleColorOrder);
+            stmt.setString(6, vehicleYearOrder);
+            stmt.setString(7, vehicleTransTypeOrder);
+            stmt.setInt(8, 0);
+            stmt.setString(9, vehicleCondition);
+            stmt.setFloat(10, vehicleSalePrice);
+            stmt.setString(11, vehicleAvailability);
+
+            stmt.addBatch();
+            stmt.executeBatch();
+
+            System.out.println("Batch executed");
+
+            conn.close();
+            stmt.close();
+
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
     } 
     
+    private String generateVIN() {
+        // The standard VIN length is 17 characters
+        int vinLength = 17;
+        
+        // Characters allowed in a VIN except 'I', 'O', and 'Q' (to avoid confusion with 1 and 0)
+        String allowedCharacters = "ABCDEFGHJKLMNPRSTUVWXYZ1234567890";
+        
+        StringBuilder vinBuilder = new StringBuilder();
+        Random random = new Random();
+        
+        // The first three characters are World Manufacturer Identifier (WMI)
+        for (int i = 0; i < 3; i++) {
+            vinBuilder.append(allowedCharacters.charAt(random.nextInt(allowedCharacters.length())));
+        }
+        
+        // The next 5 characters are Vehicle Descriptor Section (VDS)
+        for (int i = 0; i < 5; i++) {
+            vinBuilder.append(allowedCharacters.charAt(random.nextInt(allowedCharacters.length())));
+        }
+        
+        // The 9th character is the check digit, which is calculated later
+        
+        // The next 8 characters are Vehicle Identifier Section (VIS)
+        for (int i = 0; i < 8; i++) {
+            vinBuilder.append(allowedCharacters.charAt(random.nextInt(allowedCharacters.length())));
+        }
+        
+        // Convert StringBuilder to String
+        String vin = vinBuilder.toString();
+        
+        // Calculate the check digit
+        char checkDigit = calculateCheckDigit(vin);
+        
+        // Insert the check digit at the 9th position
+        vin = vin.substring(0, 8) + checkDigit + vin.substring(9);
+        
+        return vin;
+    }
+    
+    private static char calculateCheckDigit(String vin) {
+        // Weight factors for each position in the VIN
+        int[] weights = { 8, 7, 6, 5, 4, 3, 2, 10, 0, 9, 8, 7, 6, 5, 4, 3, 2 };
+        
+        int sum = 0;
+        for (int i = 0; i < vin.length(); i++) {
+            char c = vin.charAt(i);
+            if (Character.isDigit(c)) {
+                sum += Character.getNumericValue(c) * weights[i];
+            } else if (Character.isLetter(c)) {
+                // For letters, A=1, B=2, ..., Z=26
+                sum += (c - 'A' + 1) * weights[i];
+            }
+        }
+        
+        // Calculate check digit
+        int checkDigitValue = sum % 11;
+        if (checkDigitValue == 10) {
+            return 'X'; // Use 'X' for check digit 10
+        } else {
+            return Character.forDigit(checkDigitValue, 10);
+        }
+    }
 }
+

@@ -12,7 +12,7 @@
 
 package org.dealership.Entities;
 
-public class Vehicle{
+public class vehicle{
 
     public String VehicleMake;
     public String VehicleModel; 
@@ -25,8 +25,9 @@ public class Vehicle{
     public String VehiclePrice;
     public String VehicleAvail;
     public Float VehicleDiscount;
+    public String OrderFrom;
 
-    public Vehicle(String vehMake, String vehModel, String vehType, String vehColor, String vehYear, 
+    public vehicle(String vehMake, String vehModel, String vehType, String vehColor, String vehYear, 
                     String vehTransmission, String vehMiles, String vehCondition, String vehPrice,
                     String vehAvail, Float vehDisc){
         this.VehicleMake = (vehMake);
@@ -40,6 +41,22 @@ public class Vehicle{
         this.VehiclePrice =  (vehPrice);
         this.VehicleAvail =  (vehAvail);
         this.VehicleDiscount = (vehDisc);
+    }
+
+    public vehicle(String vehMake, String vehModel, String vehType, String vehColor, String vehYear, 
+                    String vehTransmission, String vehMiles, String vehCondition, String vehPrice,
+                    String vehAvail, String Place){
+        this.VehicleMake = (vehMake);
+        this.VehicleModel = (vehModel);
+        this.VehicleType = (vehType);
+        this.VehicleColor = (vehColor);
+        this.VehicleYear = (vehYear);
+        this.VehicleTransmission =  (vehTransmission);
+        this.VehicleMiles =  (vehMiles);
+        this.VehicleCondition =  (vehCondition);
+        this.VehiclePrice =  (vehPrice);
+        this.VehicleAvail =  (vehAvail);
+        this.OrderFrom = (Place);
     }
 
     public String getVehicleMake(){

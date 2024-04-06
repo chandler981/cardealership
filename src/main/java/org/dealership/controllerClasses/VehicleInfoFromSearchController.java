@@ -5,7 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import org.dealership.driverClass;
-import org.dealership.Entities.Vehicle;
+import org.dealership.Entities.vehicle;
 import org.dealership.backend.VehicleInformationDAO;
 
 import javafx.collections.FXCollections;
@@ -20,48 +20,48 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class VehicleInfoFromSearchController implements Initializable{
     
     @FXML
-    private TableColumn<Vehicle, String> AvailabilityColumn;
+    private TableColumn<vehicle, String> AvailabilityColumn;
     
     @FXML
-    private TableColumn<Vehicle, String> DiscountColumn;
+    private TableColumn<vehicle, String> DiscountColumn;
     
     @FXML
-    private TableColumn<Vehicle, String> PurchaseFromColumn;
+    private TableColumn<vehicle, String> PurchaseFromColumn;
     
     @FXML
-    private TableColumn<Vehicle, String> TransmissionColumn;
+    private TableColumn<vehicle, String> TransmissionColumn;
     
     @FXML
-    private TableColumn<Vehicle, String> VehicleColorColumn;
+    private TableColumn<vehicle, String> VehicleColorColumn;
     
     @FXML
-    private TableColumn<Vehicle, String> VehicleMilesColumn;
+    private TableColumn<vehicle, String> VehicleMilesColumn;
     
     @FXML
-    private TableColumn<Vehicle, String> VehicleMakeColumn;
+    private TableColumn<vehicle, String> VehicleMakeColumn;
     
     @FXML
-    private TableColumn<Vehicle, String> VehicleModelColumn;
+    private TableColumn<vehicle, String> VehicleModelColumn;
     
     @FXML
-    private TableColumn<Vehicle, String> VehicleTypeColumn;
+    private TableColumn<vehicle, String> VehicleTypeColumn;
     
     @FXML
-    private TableColumn<Vehicle, String> VehicleYearColumn;
+    private TableColumn<vehicle, String> VehicleYearColumn;
     
     @FXML
-    private TableColumn<Vehicle, String> VehiclePrice;
+    private TableColumn<vehicle, String> VehiclePrice;
     
     @FXML
-    private TableColumn<Vehicle, String> VehicleCondition;
+    private TableColumn<vehicle, String> VehicleCondition;
     
     @FXML
-    private TableView<Vehicle> tableShowingResults;
+    private TableView<vehicle> tableShowingResults;
     
     driverClass driver = new driverClass();
     VehicleInformationDAO vehicleTest = new VehicleInformationDAO();
-    ObservableList<Vehicle> results = FXCollections.observableArrayList();
-    ObservableList<Vehicle> dealResults = FXCollections.observableArrayList();
+    ObservableList<vehicle> results = FXCollections.observableArrayList();
+    ObservableList<vehicle> dealResults = FXCollections.observableArrayList();
     String queryUsed;
     
     @FXML
@@ -86,17 +86,17 @@ public class VehicleInfoFromSearchController implements Initializable{
         this.results = FXCollections.observableArrayList(vehicleTest.vehicleSearchResultHelper(vehicleInfo, vehicleDeal));
         System.out.println(results);
 
-        VehicleMakeColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("VehicleMake"));
-        VehicleModelColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("VehicleModel"));
-        VehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("VehicleType"));
-        VehicleColorColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("VehicleColor"));
-        AvailabilityColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("VehicleAvail"));
-        VehicleYearColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("VehicleYear"));
-        TransmissionColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("VehicleTransmission"));
-        VehicleMilesColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("VehicleMiles"));
-        VehicleCondition.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("VehicleCondition"));
-        VehiclePrice.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("VehiclePrice"));
-        DiscountColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("VehicleDiscount"));
+        VehicleMakeColumn.setCellValueFactory(new PropertyValueFactory<vehicle, String>("VehicleMake"));
+        VehicleModelColumn.setCellValueFactory(new PropertyValueFactory<vehicle, String>("VehicleModel"));
+        VehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<vehicle, String>("VehicleType"));
+        VehicleColorColumn.setCellValueFactory(new PropertyValueFactory<vehicle, String>("VehicleColor"));
+        AvailabilityColumn.setCellValueFactory(new PropertyValueFactory<vehicle, String>("VehicleAvail"));
+        VehicleYearColumn.setCellValueFactory(new PropertyValueFactory<vehicle, String>("VehicleYear"));
+        TransmissionColumn.setCellValueFactory(new PropertyValueFactory<vehicle, String>("VehicleTransmission"));
+        VehicleMilesColumn.setCellValueFactory(new PropertyValueFactory<vehicle, String>("VehicleMiles"));
+        VehicleCondition.setCellValueFactory(new PropertyValueFactory<vehicle, String>("VehicleCondition"));
+        VehiclePrice.setCellValueFactory(new PropertyValueFactory<vehicle, String>("VehiclePrice"));
+        DiscountColumn.setCellValueFactory(new PropertyValueFactory<vehicle, String>("VehicleDiscount"));
         
         tableShowingResults.setItems(this.results);
     }       

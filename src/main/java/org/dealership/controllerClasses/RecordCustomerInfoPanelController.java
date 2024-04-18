@@ -18,7 +18,8 @@ package org.dealership.controllerClasses;
 
 import java.io.IOException;
 
-import org.dealership.driverClass;
+import org.dealership.mainClass;
+import org.dealership.Entities.Customer;
 import org.dealership.backend.CustomerInformationDAO;
 
 import javafx.event.ActionEvent;
@@ -27,7 +28,7 @@ import javafx.scene.control.TextField;
 
 public class RecordCustomerInfoPanelController {
 
-    driverClass driver = new driverClass();
+    mainClass driver = new mainClass();
 
     @FXML
     private TextField CustomerCreditScore;
@@ -76,19 +77,21 @@ public class RecordCustomerInfoPanelController {
 
         // sending to database
         CustomerInformationDAO customer = new CustomerInformationDAO();
+        Customer customerSSN = new Customer(SSN);
         customer.addNewCustomerInfoHelper(SSN,  driverLicense,  dateOfBirth, phoneNumber,  firstName,  lastName,  customerAddress, downPayment, creditScore, insuranceNo);
         driver.changeScene("VehicleTradeInInformationPanel.fxml");
     }
 
     @FXML
     void GoBackToEmpOptions(ActionEvent event) throws IOException {
-        driverClass driver = new driverClass();
+        mainClass driver = new mainClass();
         driver.changeScene("EmployeeOptionsPanel.fxml");
-        }
+    }
 
     //this method and button is for testing purposes
     @FXML
     void TradeInVehicle(ActionEvent event) throws IOException {
+        Customer customerSSN = new Customer("987-65-4321");
         driver.changeScene("VehicleTradeInInformationPanel.fxml");
     }
 }

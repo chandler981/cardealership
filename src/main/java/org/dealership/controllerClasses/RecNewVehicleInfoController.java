@@ -19,7 +19,8 @@ package org.dealership.controllerClasses;
 
 import java.io.IOException;
 
-import org.dealership.driverClass;
+import org.dealership.mainClass;
+import org.dealership.backend.InputValidation;
 import org.dealership.backend.VehicleInformationDAO;
 
 import javafx.event.ActionEvent;
@@ -28,7 +29,9 @@ import javafx.scene.control.TextField;
 
 public class RecNewVehicleInfoController {
 
-    driverClass driver = new driverClass();
+    mainClass driver = new mainClass();
+    boolean allValid = true;
+    InputValidation validation = new InputValidation();
 
     @FXML
     private TextField CarColorTF;
@@ -59,19 +62,53 @@ public class RecNewVehicleInfoController {
 
     @FXML
     void EnterVehicleInfoToDB(ActionEvent event) {
-        String vehicleColor = CarColorTF.getText();
-        String vehicleMake = CarMakeTF.getText();
-        int vehicleMileage = Integer.parseInt(CarMileageTF.getText());
-        String vehicleModel = CarModelTF.getText();
-        String vehicleTransmission = CarTransmissionTF.getText();
-        String vehicleType = CarTypeTF.getText();
-        String vehicleVIN = CarVINTf.getText();
-        String vehicleYear = CarYearTF.getText();
-        String vehicleCondition = VehicleConditionTF.getText();
 
-        VehicleInformationDAO vehicle = new VehicleInformationDAO();
-
-        vehicle.addNewVehicleInfoHelper(vehicleColor, vehicleMake, vehicleMileage, vehicleModel, vehicleTransmission, vehicleType, vehicleVIN, vehicleYear, vehicleCondition);
+        if(!validation.carColorValidation(CarColorTF.getText())) {
+            allValid = false;
+            CarColorTF.clear(); 
+        }
+        if(!validation.carMakeValidation(CarMakeTF.getText())) {
+            allValid = false;
+            CarMakeTF.clear(); 
+        } 
+        if(!validation.carMileageValidation(CarMileageTF.getText())) {
+            allValid = false;
+            CarMileageTF.clear(); 
+        } 
+        if(!validation.carModelValidation(CarModelTF.getText())) {
+            allValid = false;
+            CarModelTF.clear(); 
+        } 
+        if(!validation.carTransmissionValidation(CarTransmissionTF.getText())) {
+            allValid = false;
+            CarTransmissionTF.clear(); 
+        } 
+        if(!validation.carTypeValidation(CarTypeTF.getText())) {
+            allValid = false;
+            CarTypeTF.clear(); 
+        } 
+        if(!validation.carVINValidation(CarVINTf.getText())) {
+            allValid = false;
+            CarVINTf.clear(); 
+        } 
+        if(!validation.carYearValidation(CarYearTF.getText())) {
+            allValid = false;
+            CarYearTF.clear(); 
+        } 
+        if(!validation.carConditionValidation(VehicleConditionTF.getText())) {
+            allValid = false;
+            VehicleConditionTF.clear(); 
+        }  
+         
+        if(allValid) {
+            VehicleInformationDAO vehicle = new VehicleInformationDAO();
+            vehicle.addNewVehicleInfoHelper(CarColorTF.getText(), CarMakeTF.getText(), Integer.parseInt(CarMileageTF.getText()), 
+                                            CarModelTF.getText(), CarTransmissionTF.getText(), CarTypeTF.getText(), 
+                                            CarVINTf.getText(), CarYearTF.getText(), VehicleConditionTF.getText());
+        } else {
+            // Optionally, display an error message to the user in the console
+            System.out.println("Invalid input in one or more fields. Please correct and try again.");
+        }
     }
 
     @FXML

@@ -22,7 +22,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class driverClass extends Application{
+public class mainClass extends Application{
 
     private static Stage stage; //stage variable for the ui to be able to cycle between scenes
 
@@ -37,7 +37,7 @@ public class driverClass extends Application{
         try{
             try{
                 stage = primaryStage;
-                Parent root = FXMLLoader.load((getClass().getResource("/fxmlFiles/CustomerBuyingVehiclePanel.fxml")));
+                Parent root = FXMLLoader.load((getClass().getResource("/fxmlFiles/RecordNewVehicleInformation.fxml")));
                 Scene newScene = new Scene(root, 750, 530);
                 primaryStage.setScene(newScene);
                 primaryStage.setResizable(true);
@@ -60,7 +60,7 @@ public class driverClass extends Application{
     }
 
     //method for helping with persisting info from one page to another when its needed
-    public void changeScne(String fxml, Parent root) throws IOException{
+    public void changeScene(String fxml, Parent root) throws IOException{
         stage.getScene().setRoot(root);
     }
 

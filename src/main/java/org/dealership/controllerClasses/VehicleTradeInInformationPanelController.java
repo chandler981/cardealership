@@ -19,7 +19,8 @@ package org.dealership.controllerClasses;
 
 import java.io.IOException;
 
-import org.dealership.driverClass;
+import org.dealership.mainClass;
+import org.dealership.Entities.Customer;
 import org.dealership.backend.CustomerInformationDAO;
 import org.dealership.backend.VehicleInformationDAO;
 
@@ -29,7 +30,7 @@ import javafx.scene.control.TextField;
 
 public class VehicleTradeInInformationPanelController {
 
-    driverClass driver = new driverClass();
+    mainClass driver = new mainClass();
     CustomerInformationDAO customer = new CustomerInformationDAO();
 
     @FXML
@@ -61,21 +62,28 @@ public class VehicleTradeInInformationPanelController {
 
     @FXML
     void EnterTradeInVehicleInfo(ActionEvent event) throws IOException {
-        String tradeInTransmission = TradeInVehiclTransmission.getText();
-        String tradeInColor = TradeInVehicleColor.getText();
-        String tradeInMake = TradeInVehicleMake.getText();
-        int tradeInMiles = Integer.parseInt(TradeInVehicleMileage.getText());
-        String tradeInModel = TradeInVehicleModel.getText();
-        String tradeInVIN = TradeInVehicleVIN.getText();
-        Boolean tradeInVerification = true;
-        String tradeInYear = TradeInVehicleYear.getText();
-        String tradeInType = TradeInVehicleType.getText();
-
-        //tradeInTrans, tradeInColor, tradeInMake, tradeInMiles, tradeInModel, tradeInVIN, tradeInVerif, tradeInYear
-
-        VehicleInformationDAO tradeIn = new VehicleInformationDAO();
-        tradeIn.addTradeInVehicleInfoHelper(tradeInTransmission, tradeInColor, tradeInMake, tradeInMiles, tradeInModel, tradeInVIN, tradeInVerification, tradeInYear, tradeInType);
-        driver.changeScene("CustomerBuyingVehiclePanel.fxml");
+        if((TradeInVehiclTransmission.getText().isEmpty() && TradeInVehicleColor.getText().isEmpty()&& TradeInVehicleMileage.getText().isEmpty() && 
+            TradeInVehicleModel.getText().isEmpty() && TradeInVehicleVIN.getText().isEmpty() && TradeInVehicleYear.getText().isEmpty() && 
+            TradeInVehicleType.getText().isEmpty()) == true){
+                driver.changeScene("CustomerBuyingVehiclePanel.fxml");
+        }
+        else{
+            String tradeInTransmission = TradeInVehiclTransmission.getText();
+            String tradeInColor = TradeInVehicleColor.getText();
+            String tradeInMake = TradeInVehicleMake.getText();
+            int tradeInMiles = Integer.parseInt(TradeInVehicleMileage.getText());
+            String tradeInModel = TradeInVehicleModel.getText();
+            String tradeInVIN = TradeInVehicleVIN.getText();
+            Boolean tradeInVerification = true;
+            String tradeInYear = TradeInVehicleYear.getText();
+            String tradeInType = TradeInVehicleType.getText();
+    
+            //tradeInTrans, tradeInColor, tradeInMake, tradeInMiles, tradeInModel, tradeInVIN, tradeInVerif, tradeInYear
+    
+            VehicleInformationDAO tradeIn = new VehicleInformationDAO();
+            tradeIn.addTradeInVehicleInfoHelper(tradeInTransmission, tradeInColor, tradeInMake, tradeInMiles, tradeInModel, tradeInVIN, tradeInVerification, tradeInYear, tradeInType);
+            driver.changeScene("CustomerBuyingVehiclePanel.fxml");
+        }
     }
 
     @FXML
@@ -85,6 +93,7 @@ public class VehicleTradeInInformationPanelController {
 
     @FXML
     void TestButtonToChangeScene(ActionEvent event) throws IOException {
+        Customer c = new Customer();
         driver.changeScene("CustomerBuyingVehiclePanel.fxml");
     }
 

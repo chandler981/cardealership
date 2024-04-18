@@ -16,14 +16,14 @@ package org.dealership.controllerClasses;
 
 import java.io.IOException;
 
-import org.dealership.driverClass;
+import org.dealership.mainClass;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 public class ManagerOptionPanelController {
 
-    driverClass driver = new driverClass();
+    mainClass driver = new mainClass();
 
      @FXML
     void CalculateCommissionPage(ActionEvent event) throws IOException {

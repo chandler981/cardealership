@@ -12,7 +12,7 @@
 
 package org.dealership.Entities;
 
-public class vehicle{
+public class Vehicle{
 
     public String VehicleMake;
     public String VehicleModel; 
@@ -27,7 +27,7 @@ public class vehicle{
     public Float VehicleDiscount;
     public String OrderFrom;
 
-    public vehicle(String vehMake, String vehModel, String vehType, String vehColor, String vehYear, 
+    public Vehicle(String vehMake, String vehModel, String vehType, String vehColor, String vehYear, 
                     String vehTransmission, String vehMiles, String vehCondition, String vehPrice,
                     String vehAvail, Float vehDisc){
         this.VehicleMake = (vehMake);
@@ -43,7 +43,7 @@ public class vehicle{
         this.VehicleDiscount = (vehDisc);
     }
 
-    public vehicle(String vehMake, String vehModel, String vehType, String vehColor, String vehYear, 
+    public Vehicle(String vehMake, String vehModel, String vehType, String vehColor, String vehYear, 
                     String vehTransmission, String vehMiles, String vehCondition, String vehPrice,
                     String vehAvail, String Place){
         this.VehicleMake = (vehMake);

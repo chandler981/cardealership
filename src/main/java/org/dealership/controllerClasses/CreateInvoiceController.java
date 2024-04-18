@@ -16,8 +16,10 @@ package org.dealership.controllerClasses;
 
 import java.io.IOException;
 
-import org.dealership.driverClass;
+import org.dealership.mainClass;
+import org.dealership.Entities.Customer;
 import org.dealership.Entities.Invoice;
+import org.dealership.backend.CustomerInformationDAO;
 import org.dealership.backend.InvoiceDAO;
 
 import javafx.event.ActionEvent;
@@ -26,7 +28,7 @@ import javafx.scene.control.TextField;
 
 public class CreateInvoiceController {
 
-    driverClass driver = new driverClass();
+    mainClass driver = new mainClass();
 
     @FXML
     private TextField BuyerAddressInvoice;
@@ -49,20 +51,32 @@ public class CreateInvoiceController {
     @FXML
     private TextField PurchaseDateInvoice;
 
+    public void fillText(){
+      CustomerInformationDAO c = new CustomerInformationDAO();
+      Customer cust = new Customer();
+      String Info [] = c.customerInfoHolder;
+
+      // BuyerFeesInvoice.setText();
+      // DiscountTotalInvoice.setText();
+      // PaymentTotalInvoice.setText();
+      CustomerIDInvoice.setText(c.customerID);
+      PaymentTypeInvoice.setText(Info[7]);
+      PurchaseDateInvoice.setText(cust.getBuyDate());
+      BuyerAddressInvoice.setText(Info[6]);
+      for(int i = 0; i < Info.length; i++){
+        System.out.println("Info array " + Info[i]);
+        System.out.println("Info array from customer class " + c.customerInfoHolder[i]);
+      }
+    }
+
+    @FXML
+    void AutoFill(ActionEvent event) {
+      fillText();
+    }
+
     @FXML
     void generateInvoiceButton(ActionEvent event) {
-
-    }
-
-    @FXML
-    void GoBackToEmpOptions(ActionEvent event) throws IOException {
-        driver.changeScene("EmployeeOptionsPanel.fxml");
-    }
-
-    // This method is called by user clicking submit button
-    @FXML
-		public void createInvoice() {
-    	// Pull information from TextFields
+      // Pull information from TextFields
       String addressText = BuyerAddressInvoice.getText();
       String feesText = BuyerFeesInvoice.getText();
       String customerIdText = CustomerIDInvoice.getText();
@@ -74,9 +88,12 @@ public class CreateInvoiceController {
       Invoice inv = new Invoice(addressText, feesText, customerIdText, discountTotalText, paymentTotalText, paymentTypeText, purchaseDateText);
       
       // Pass the inv object to the DAO class for saving
-    	InvoiceDAO dao = new InvoiceDAO();
-    	dao.saveInvoice(inv);
-     
+      InvoiceDAO dao = new InvoiceDAO();
+      dao.saveInvoice(inv);
     }
-    
+
+    @FXML
+    void GoBackToEmpOptions(ActionEvent event) throws IOException {
+        driver.changeScene("EmployeeOptionsPanel.fxml");
+    }
 }

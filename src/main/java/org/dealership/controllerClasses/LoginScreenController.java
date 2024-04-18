@@ -16,7 +16,7 @@
 package org.dealership.controllerClasses;
 import java.io.IOException;
 
-import org.dealership.driverClass;
+import org.dealership.mainClass;
 import org.dealership.Entities.Employee;
 import org.dealership.backend.EmployeeInformationDAO;
 
@@ -27,7 +27,7 @@ import javafx.scene.control.TextField;
 
 public class LoginScreenController {
 
-    driverClass driver = new driverClass();
+    mainClass driver = new mainClass();
     Employee emp = new Employee();
     
     @FXML

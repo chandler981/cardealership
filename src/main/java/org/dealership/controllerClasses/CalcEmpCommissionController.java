@@ -17,7 +17,7 @@
 
     import java.io.IOException;
 
-    import org.dealership.driverClass;
+    import org.dealership.mainClass;
     import org.dealership.Entities.Employee;
     import org.dealership.backend.EmployeeInformationDAO;
 
@@ -27,7 +27,7 @@
 
     public class CalcEmpCommissionController {
 
-    driverClass driver = new driverClass();
+    mainClass driver = new mainClass();
     Employee emp = new Employee();
     EmployeeInformationDAO empSQL = new EmployeeInformationDAO();
 
@@ -39,11 +39,11 @@
 
     @FXML
     void CalculateComissionAmount(ActionEvent event) throws IOException{
-    String newComm = comissionAmnt.getText();
-    Double newCommVal = Double.parseDouble(newComm);
-    System.out.println("entered ammount is " + newCommVal);
-    emp.computeCommHelper(newCommVal);
-    empSQL.inputNewCommAmntHelper(employeeIDForComission.getText());
+        String newComm = comissionAmnt.getText();
+        Double newCommVal = Double.parseDouble(newComm);
+        System.out.println("entered ammount is " + newCommVal);
+        emp.computeCommHelper(newCommVal);
+        empSQL.inputNewCommAmntHelper(employeeIDForComission.getText());
     }
 
     @FXML

@@ -18,7 +18,7 @@
 
  import java.io.IOException;
  
- import org.dealership.driverClass;
+ import org.dealership.mainClass;
 import org.dealership.Entities.Employee;
 import org.dealership.backend.VehicleInformationDAO;
 
@@ -33,7 +33,7 @@ import javafx.event.ActionEvent;
  public class OrderVehiclePageController {
     ObservableList<String> orderFromOpitionList = FXCollections.observableArrayList("Manufacture", "Dealer A", "Dealer B");
  
-    driverClass driver = new driverClass();
+    mainClass driver = new mainClass();
     Employee currentEmployee = new Employee();
  
      @FXML

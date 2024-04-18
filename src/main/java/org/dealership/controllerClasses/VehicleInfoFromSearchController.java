@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import org.dealership.driverClass;
-import org.dealership.Entities.vehicle;
+import org.dealership.mainClass;
+import org.dealership.Entities.Vehicle;
 import org.dealership.backend.VehicleInformationDAO;
 
 import javafx.collections.FXCollections;
@@ -20,84 +20,89 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class VehicleInfoFromSearchController implements Initializable{
     
     @FXML
-    private TableColumn<vehicle, String> AvailabilityColumn;
+    private TableColumn<Vehicle, String> AvailabilityColumn;
     
     @FXML
-    private TableColumn<vehicle, String> DiscountColumn;
+    private TableColumn<Vehicle, String> DiscountColumn;
     
     @FXML
-    private TableColumn<vehicle, String> PurchaseFromColumn;
+    private TableColumn<Vehicle, String> PurchaseFromColumn;
     
     @FXML
-    private TableColumn<vehicle, String> TransmissionColumn;
+    private TableColumn<Vehicle, String> TransmissionColumn;
     
     @FXML
-    private TableColumn<vehicle, String> VehicleColorColumn;
+    private TableColumn<Vehicle, String> VehicleColorColumn;
     
     @FXML
-    private TableColumn<vehicle, String> VehicleMilesColumn;
+    private TableColumn<Vehicle, String> VehicleMilesColumn;
     
     @FXML
-    private TableColumn<vehicle, String> VehicleMakeColumn;
+    private TableColumn<Vehicle, String> VehicleMakeColumn;
     
     @FXML
-    private TableColumn<vehicle, String> VehicleModelColumn;
+    private TableColumn<Vehicle, String> VehicleModelColumn;
     
     @FXML
-    private TableColumn<vehicle, String> VehicleTypeColumn;
+    private TableColumn<Vehicle, String> VehicleTypeColumn;
     
     @FXML
-    private TableColumn<vehicle, String> VehicleYearColumn;
+    private TableColumn<Vehicle, String> VehicleYearColumn;
     
     @FXML
-    private TableColumn<vehicle, String> VehiclePrice;
+    private TableColumn<Vehicle, String> VehiclePrice;
     
     @FXML
-    private TableColumn<vehicle, String> VehicleCondition;
+    private TableColumn<Vehicle, String> VehicleCondition;
     
     @FXML
-    private TableView<vehicle> tableShowingResults;
+    private TableView<Vehicle> tableShowingResults;
     
-    driverClass driver = new driverClass();
+    mainClass driver = new mainClass();
     VehicleInformationDAO vehicleTest = new VehicleInformationDAO();
-    ObservableList<vehicle> results = FXCollections.observableArrayList();
-    ObservableList<vehicle> dealResults = FXCollections.observableArrayList();
+    ObservableList<Vehicle> results = FXCollections.observableArrayList();
+    ObservableList<Vehicle> dealResults = FXCollections.observableArrayList();
     String queryUsed;
     
+    /*
+     * Method was used to test table when trying to get it to work properly, can be
+     * removed in future.
+     */
     @FXML
     void TestingQueryToDisplay(ActionEvent event) {
-        // for(int i = 0; i < results.size(); i++){ //get this method accept the inputs from the objects in the results list
-            //     result = this.results.get(i);
-            //     System.out.println(result.getVehicleMake());
-            // }
+
     }
-        
+    
+    /*
+     * This method will take the results from the SQL query and assign it to the correlating 
+     * cell in the table. 
+     * It does this by taking an observable list, similar to a list, then uses that to apply it
+     * to the tables cells. 
+     * It utilizes the FXCollections library that is in JavaFX.
+     * The properties in the PropertyValueFactory parameters have to be corresponding to a get 
+     * method to be able to pull info to apply correctly.
+     */
+
     @Override
-    public void initialize(URL location, ResourceBundle resources) 
+    public void initialize(URL location, ResourceBundle resources)
         {
-        // tableShowingResults.clea
         SearchVehicleInformationPanelController query = new SearchVehicleInformationPanelController();
-        
-        String vehicleInfo = query.getQuery();
-        // String vehicleInfo = "select * from vehicle where vehicleMake = 'Hyundai' and vehicleModel = 'santa fe' and vehicleType = 'suv' and vehicleColor = 'white' and vehicleYear = '2021' and vehicleMileage = 15000";
-        String vehicleDeal = query.getDealQuery();
-        //String vehicleDeal = "select discount from deal where vehicleType = 'suv'"; 
+        this.results = query.getResults();
 
-        this.results = FXCollections.observableArrayList(vehicleTest.vehicleSearchResultHelper(vehicleInfo, vehicleDeal));
-        System.out.println(results);
-
-        VehicleMakeColumn.setCellValueFactory(new PropertyValueFactory<vehicle, String>("VehicleMake"));
-        VehicleModelColumn.setCellValueFactory(new PropertyValueFactory<vehicle, String>("VehicleModel"));
-        VehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<vehicle, String>("VehicleType"));
-        VehicleColorColumn.setCellValueFactory(new PropertyValueFactory<vehicle, String>("VehicleColor"));
-        AvailabilityColumn.setCellValueFactory(new PropertyValueFactory<vehicle, String>("VehicleAvail"));
-        VehicleYearColumn.setCellValueFactory(new PropertyValueFactory<vehicle, String>("VehicleYear"));
-        TransmissionColumn.setCellValueFactory(new PropertyValueFactory<vehicle, String>("VehicleTransmission"));
-        VehicleMilesColumn.setCellValueFactory(new PropertyValueFactory<vehicle, String>("VehicleMiles"));
-        VehicleCondition.setCellValueFactory(new PropertyValueFactory<vehicle, String>("VehicleCondition"));
-        VehiclePrice.setCellValueFactory(new PropertyValueFactory<vehicle, String>("VehiclePrice"));
-        DiscountColumn.setCellValueFactory(new PropertyValueFactory<vehicle, String>("VehicleDiscount"));
+        System.out.println("Else statement to show results is entered.");
+        VehicleMakeColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("VehicleMake"));
+        VehicleModelColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("VehicleModel"));
+        VehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("VehicleType"));
+        VehicleColorColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("VehicleColor"));
+        AvailabilityColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("VehicleAvail"));
+        VehicleYearColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("VehicleYear"));
+        TransmissionColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("VehicleTransmission"));
+        VehicleMilesColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("VehicleMiles"));
+        VehicleCondition.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("VehicleCondition"));
+        VehiclePrice.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("VehiclePrice"));
+        DiscountColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("VehicleDiscount"));
         
+        //this sets the table with the correct items and displays it
         tableShowingResults.setItems(this.results);
     }       
 
@@ -111,6 +116,4 @@ public class VehicleInfoFromSearchController implements Initializable{
     void GoToRecordCustInfo(ActionEvent event) throws IOException {
         driver.changeScene("RecordCustomerInfoPanel.fxml");
     }
-
-    
 }

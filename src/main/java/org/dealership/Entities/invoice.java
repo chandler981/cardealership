@@ -15,13 +15,13 @@ package org.dealership.Entities;
 public class Invoice{
 
     // Data Fields for each attribute
-    String custAddress = "No Address Specified";
-    String fees = "No Address Specified";
-    String custID = "No Address Specified";
-    String discountTotal = "No Address Specified";
-    String paymentTotal = "No Address Specified";
-    String paymentType = "No Address Specified";
-    String purchaseDate = "No Address Specified";
+    static String custAddress = "No Address Specified";
+    static String fees = "No Address Specified";
+    static String custID = "No Address Specified";
+    static String discountTotal = "No Address Specified";
+    static String paymentTotal = "No Address Specified";
+    static String paymentType = "No Address Specified";
+    static String purchaseDate = "No Address Specified";
 
     
     public Invoice(String custAddress, String fees, String custID, String discountTotal, String paymentTotal, String paymentType, String purchaseDate){

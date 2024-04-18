@@ -18,14 +18,18 @@ package org.dealership.controllerClasses;
 
 import java.io.IOException;
 
-import org.dealership.driverClass;
+import org.dealership.mainClass;
+import org.dealership.Entities.Vehicle;
+import org.dealership.backend.VehicleInformationDAO;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 public class SearchVehicleInformationPanelController {
-    driverClass driver = new driverClass();
+    mainClass driver = new mainClass();
     VehicleInfoFromSearchController searchQuery = new VehicleInfoFromSearchController();
 
     @FXML
@@ -48,6 +52,8 @@ public class SearchVehicleInformationPanelController {
 
     public static String query;
     public static String dealQuery;
+    public static ObservableList<Vehicle> results = FXCollections.observableArrayList();
+    VehicleInformationDAO vehicleTest = new VehicleInformationDAO();
 
     @FXML
     void GoBackToEmpOptions(ActionEvent event) throws IOException {
@@ -72,17 +78,20 @@ public class SearchVehicleInformationPanelController {
             + vehicleColor + "' and vehicleYear = '" + vehicleYear + "' and vehicleMileage = '" + vehicleMileage + "'";
 
         dealQuery = "SELECT discount FROM deal WHERE vehicleType = '" + vehicleType + "'";
+        
+        results = FXCollections.observableArrayList(vehicleTest.vehicleSearchResultHelper(query, dealQuery));
 
-
-        driver.changeScene("SearchVehicleInfoResultPanel.fxml");
+        if(results.isEmpty()){
+            driver.changeScene("OrderVehiclePage.fxml");
+        }
+        else{
+            driver.changeScene("SearchVehicleInfoResultPanel.fxml");
+        }
     }
 
-    public String getQuery(){
-        return (query);
-    }
-
-    public String getDealQuery(){
-        return dealQuery;
+    @SuppressWarnings("exports")
+    public ObservableList<Vehicle> getResults(){
+        return results;
     }
 
     

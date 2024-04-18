@@ -16,7 +16,7 @@
 package org.dealership.controllerClasses;
 
 import java.io.IOException;
-import org.dealership.driverClass;
+import org.dealership.mainClass;
 import org.dealership.backend.DealInfomationDAO;
 
 import javafx.event.ActionEvent;
@@ -25,7 +25,7 @@ import javafx.scene.control.TextField;
 
 public class WeeklyDealsPanelController {
 
-   driverClass driver = new driverClass();
+   mainClass driver = new mainClass();
 
    @FXML
    private TextField Discount;

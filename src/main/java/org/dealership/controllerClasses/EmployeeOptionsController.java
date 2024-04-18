@@ -17,14 +17,14 @@
 
  import java.io.IOException;
 
-import org.dealership.driverClass;
+import org.dealership.mainClass;
 
 import javafx.event.ActionEvent;
  import javafx.fxml.FXML;
  
  public class EmployeeOptionsController {
 
-    driverClass driver = new driverClass();
+    mainClass driver = new mainClass();
  
     @FXML
     void BuyVehicle(ActionEvent event) throws IOException {

@@ -20,8 +20,9 @@
     import org.dealership.mainClass;
     import org.dealership.Entities.Employee;
     import org.dealership.backend.EmployeeInformationDAO;
+import org.dealership.backend.InputValidation;
 
-    import javafx.event.ActionEvent;
+import javafx.event.ActionEvent;
     import javafx.fxml.FXML;
     import javafx.scene.control.TextField;
 
@@ -38,12 +39,35 @@
     private TextField employeeIDForComission;
 
     @FXML
-    void CalculateComissionAmount(ActionEvent event) throws IOException{
-        String newComm = comissionAmnt.getText();
-        Double newCommVal = Double.parseDouble(newComm);
-        System.out.println("entered ammount is " + newCommVal);
-        emp.computeCommHelper(newCommVal);
-        empSQL.inputNewCommAmntHelper(employeeIDForComission.getText());
+    void CalculateComissionAmount(ActionEvent event) throws IOException, InterruptedException{
+        InputValidation validation = new InputValidation();
+        boolean allValid = true;
+
+        if(!validation.commissionValidation(comissionAmnt.getText())){
+            allValid = false;
+            comissionAmnt.clear();
+            comissionAmnt.setText("Invalid");
+
+        }
+
+        if(!validation.IDValidaiton(employeeIDForComission.getText())){
+            allValid = false;
+            employeeIDForComission.clear();
+            employeeIDForComission.setText("Invalid");
+
+        }
+
+        if(allValid){
+            String newComm = comissionAmnt.getText();
+            Double newCommVal = Double.parseDouble(newComm);
+            System.out.println("entered ammount is " + newCommVal);
+            emp.computeCommHelper(newCommVal);
+            empSQL.inputNewCommAmntHelper(employeeIDForComission.getText());
+        }
+        else{
+            System.out.println("Multiple inputs invalid. Try again.");
+        }
+
     }
 
     @FXML

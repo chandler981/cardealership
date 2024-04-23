@@ -1,15 +1,9 @@
 package org.dealership.controllerClasses;
-import java.io.IOException;
 
 import org.dealership.backend.InputValidation;
 import org.junit.*;
 
-import javafx.event.ActionEvent;
-import javafx.scene.control.TextField;
-
 public class RecNewVehicleInfoControllerTest {
-    RecNewVehicleInfoController rec = new RecNewVehicleInfoController();
-
     /*
      * Test 1 where it should work correctly by using the input validation methods that
      * that the GUI also utilizes for input validation since testing the GUI directly 

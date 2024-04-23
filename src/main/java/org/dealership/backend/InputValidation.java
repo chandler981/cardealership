@@ -28,7 +28,7 @@ public class InputValidation {
     /*
      * These are the patterns used through out the entire program to 
      * check inputs on all of the controller classes.
-    */
+     */
 
     //these patterns deal with matching information with people
     String namePattern = "^[a-zA-Z]+\\s[a-zA-Z]+$";
@@ -36,6 +36,14 @@ public class InputValidation {
     String addressPattern = "^\\d+\\s+([A-Za-z0-9\\s\\-\\.]+)(?:\\s(?:Ave|St|Blvd|Rd|Dr|Ln|Ct|Pl|Sq|Pkwy|Way|Cres|Al|Alley|Circle))?(?:\\s(?:E|W|N|S))?$";
     String bankNumPattern = "^^\\d{9,18}$";
     String phoneNumPattern = "^\\(\\d{3}\\)\\s?\\d{3}-\\d{4}$";
+    String IDPattern = "^\\d{4}$";
+    String commissionPattern = "^\\d+(\\.\\d{1,2})?$";
+    String creditScorePattern = "^\\d{3}$";
+    String birthDayPattern = "^(?:19|20)\\d{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\\d|3[01])$";
+    String zipCodePattern = "^\\d{5}(?:-\\d{4})?$";
+    String statePattern = "^[A-Z]{2}$";
+    String licenseNumberPattern = "^[A-Za-z0-9]{6,10}$";
+    String insuranceNumberPattern = "^[A-Za-z0-9]{6,20}$";
 
     //these patterns deal with matching information with vehicles
     String carColorPattern = "^([A-Za-z]+|\\s*)$";
@@ -48,8 +56,124 @@ public class InputValidation {
     String carYearPattern = "^(19|20)\\d{2}$";
     String carConditionPattern = "^(New|Used)$";
 
+    //This commented out method is a template for a inputValidation method
+    // public boolean *Validation(){
+    //     Pattern pattern = Pattern.compile();
+    //     Matcher matcher = pattern.matcher();
+    //     if(matcher.matches()){
+    //         return true;
+    //     }
+    //     else{
+    //         return false;
+    //     }
+    // }
+
+    //This commented out if statement is a template that can be used in controller classes
+    //to clear a text field if the input is invalid.
+    // if(!validation.Validation(name.getText())){
+    //     allValid = false;
+    //     name.clear();
+    // }
+
+    //This is a template for a line in the test files that will let you test these input validation methods.
+    //it can be true or false and word is replaced with the input to the specific method
+    //Assert.assertEquals(true, word);
+
+    //This commented out part is for the objects and variable required for doing RegEx in the controller classes
+    // InputValidation validation = new InputValidation();
+    // boolean allValid = true;
     
     //Methods for checking patterns dealing with people
+    public boolean CreditScoreValidation(String score){
+        Pattern pattern = Pattern.compile(creditScorePattern);
+        Matcher matcher = pattern.matcher(score);
+        if(matcher.matches()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public boolean BirthDayValidation(String birthDay){
+        Pattern pattern = Pattern.compile(birthDayPattern);
+        Matcher matcher = pattern.matcher(birthDay);
+        if(matcher.matches()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public boolean ZipCodeValidation(String zipCode){
+        Pattern pattern = Pattern.compile(zipCodePattern);
+        Matcher matcher = pattern.matcher(zipCode);
+        if(matcher.matches()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public boolean StateAbrvValidation(String state){
+        Pattern pattern = Pattern.compile(statePattern);
+        Matcher matcher = pattern.matcher(state);
+        if(matcher.matches()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public boolean LicenseNumberValidation(String LicenseNum){
+        Pattern pattern = Pattern.compile(licenseNumberPattern);
+        Matcher matcher = pattern.matcher(LicenseNum);
+        if(matcher.matches()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public boolean InsuranceNumberValidation(String InsuranceNum){
+        Pattern pattern = Pattern.compile(insuranceNumberPattern);
+        Matcher matcher = pattern.matcher(InsuranceNum);
+        if(matcher.matches()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public boolean IDValidaiton(String ID){
+        Pattern pattern = Pattern.compile(IDPattern);
+        Matcher matcher = pattern.matcher(ID);
+        if(matcher.matches()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public boolean commissionValidation(String commission){
+
+        double commissionCheck;
+        try{
+            commissionCheck = Double.parseDouble(commission);
+            Pattern pattern = Pattern.compile(commissionPattern);
+            Matcher matcher = pattern.matcher(commission);
+            if(matcher.matches()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        catch(NumberFormatException e){
+            e.printStackTrace();
+            return false;
+        }
+
+    }
     public boolean NameValidation(String name){
         Pattern pattern = Pattern.compile(namePattern);
         Matcher matcher = pattern.matcher(name);

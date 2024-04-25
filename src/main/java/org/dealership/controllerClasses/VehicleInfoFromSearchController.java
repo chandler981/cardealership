@@ -1,3 +1,18 @@
+/*
+ * Author:       Chandler Ward
+ * Written:      2 / 13 / 2024
+ * Last Updated: 4 / 25 / 2024
+ * 
+ * Compilation:  javac driverClass.java
+ * Execution:    java driverClass
+ * 
+ * This file and class handles the actual portion
+ * of displaying the results of a search from the 
+ * search vehicle page.
+ *  
+ * % java driverClass
+ */
+
 package org.dealership.controllerClasses;
 
 import java.io.IOException;

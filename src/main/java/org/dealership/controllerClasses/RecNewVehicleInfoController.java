@@ -1,7 +1,7 @@
 /*
  * Author:       Chandler Ward
  * Written:      2 / 6 / 2024
- * Last Updated: 2 / 6 / 2024
+ * Last Updated: 4 / 25 / 2024
  * 
  * Compilation:  javac driverClass.java
  * Execution:    java driverClass
@@ -57,6 +57,13 @@ public class RecNewVehicleInfoController {
     @FXML
     private TextField VehicleConditionTF;
 
+    /*
+     * Method that is attached to a button that is used
+     * for manually entering a new vehicle into the vehicle
+     * database via the manager, everything in the textfields
+     * gets run through the input validation methods and then
+     * passed to the corresponding class to be pushed to the database
+     */
     @FXML
     void EnterVehicleInfoToDB(ActionEvent event) {
         String vehicleColor = CarColorTF.getText();

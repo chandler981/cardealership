@@ -1,7 +1,7 @@
 /*
  * Author:       Chandler Ward
  * Written:      2 / 6 / 2024
- * Last Updated: 2 / 6 / 2024
+ * Last Updated: 4 / 25 / 2024
  * 
  * Compilation:  javac driverClass.java
  * Execution:    java driverClass
@@ -67,6 +67,7 @@
         return this.saleAmmount;
     }
 
+    //Method calculates a comission amount based on the sale of a vehicle
     private void computeCommissions(){
         if(saleAmmount <= 100000.0){ // checks if sales made by employee are <= 100k
             employeePaymentAmmount = saleAmmount * 0.05;

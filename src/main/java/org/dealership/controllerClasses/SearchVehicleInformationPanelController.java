@@ -1,7 +1,7 @@
 /*
  * Author:       Chandler Ward
  * Written:      2 / 13 / 2024
- * Last Updated: 2 / 13 / 2024
+ * Last Updated: 4 / 25 / 2024
  * 
  * Compilation:  javac driverClass.java
  * Execution:    java driverClass
@@ -50,6 +50,12 @@ public class SearchVehicleInformationPanelController {
         driver.changeScene("EmployeeOptionsPanel.fxml");
     }
 
+
+    /*
+     * This method takes the inputs in the textfields from the search page and then
+     * pushes them to the corresponding DAO page that utilizes the JavaFX library and
+     * corresponding data structurs to be used, like the observableArrayList.
+     */
     @FXML
     void SearchVehicleInfo(ActionEvent event) {
 

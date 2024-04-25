@@ -1,7 +1,7 @@
 /*
  * Author:       Chandler Ward
  * Written:      2 / 6 / 2024
- * Last Updated: 2 / 6 / 2024
+ * Last Updated: 4 / 25 / 2024
  * 
  * Compilation:  javac driverClass.java
  * Execution:    java driverClass
@@ -52,6 +52,10 @@ import javafx.event.ActionEvent;
      @FXML
      private ChoiceBox<?> OrderFromOptions;
  
+     //method that is attached to a butotn that assigns the 
+     //text field inputs to variables that are then passed to 
+     //an object of a DAO class so that the information can be 
+     //stored for use
      @FXML
      void OrderVehicle(ActionEvent event) {
  

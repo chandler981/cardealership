@@ -1,7 +1,7 @@
 /*
  * Author:       Chandler Ward
  * Written:      2 / 13 / 2024
- * Last Updated: 2 / 13 / 2024
+ * Last Updated: 4 / 25 / 2024
  * 
  * Compilation:  javac driverClass.java
  * Execution:    java driverClass
@@ -56,6 +56,13 @@ public class VehicleTradeInInformationPanelController {
 
     @FXML
     private TextField TradeInVehicleYear;
+
+    /*
+    * This method is solely for taking the input information in the textfields
+    * for a vehicle that is being traded in, or not being traded in, if the textfields are fill
+    * then the information is taken and put to the database and if they arent then it just moves
+    * on to the next page as normal
+    */
 
     @FXML
     void EnterTradeInVehicleInfo(ActionEvent event) {

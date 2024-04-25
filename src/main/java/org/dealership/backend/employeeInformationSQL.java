@@ -1,7 +1,7 @@
 /*
 * Author:       Chandler Ward
 * Written:      2 / 6 / 2024
-* Last Updated: 2 / 6 / 2024
+* Last Updated: 4 / 25 / 2024
 * 
 * Compilation:  javac employeeInformationSQL.java
 * Execution:    java employeeInformationSQL
@@ -26,11 +26,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.dealership.driverClass;
-import org.dealership.Entities.employee;
+import org.dealership.mainClass;
+import org.dealership.Entities.Employee;
 import org.dealership.controllerClasses.LoginScreenController;
 
-public class employeeInformationSQL{
+public class EmployeeInformationDAO{
 
     // this line is for creating a string that will allow the bridge connection of java and sql and is used globally
     // the first part is referring to the driver that allows java to talk to the sql server
@@ -40,7 +40,7 @@ public class employeeInformationSQL{
     private String employeeID;
     private String employeePassword;
 
-    driverClass driver = new driverClass();
+    mainClass driver = new mainClass();
     
     public void checkLogin(String empID, String empPass) throws IOException{
         setEmpID(empID);
@@ -61,15 +61,10 @@ public class employeeInformationSQL{
     private String getEmpPass(){
         return this.employeePassword;
     }
-
-    /*
-    * fix issue where any user can use any password to login to their respective account based on the 
-    * ID entered
-    */
     
     private void checkLoginHelper(String ID, String password) throws IOException{ 
         LoginScreenController login = new LoginScreenController();
-        employee currentEmployee = new employee();
+        Employee currentEmployee = new Employee();
         try{
             //this allows the user to connect and interact with the sql database
             Connection conn = DriverManager.getConnection(driver.getConnection());
@@ -90,7 +85,6 @@ public class employeeInformationSQL{
 
                 if(checkUser.equals(ID)){ //checks to see if result from data table is equal to user input userName from login screen
                     System.out.println("Username is valid. ");
-
                 }
             }
 
@@ -98,30 +92,26 @@ public class employeeInformationSQL{
                 String checkPass = passwordResult.getString("employeePassword");
                 String checkUser = userNameResult.getString("employeeID");
 
-            if(checkPass.equals(password) && checkUser.equals(ID)){ //checks if the password from the database query is equal to login screen password input
-                    System.out.println("password is correct. ");
-                    if(managerStatusResult.next()){
-                        Boolean checkManager = managerStatusResult.getBoolean("isManager");
-                        if(checkManager){
-                                System.out.println("Manager logged in.");
-                                currentEmployee.currentEmployeeStatusUpdate(true); 
-                                login.changeToManager();
+                if(checkPass.equals(password) && checkUser.equals(ID)){ //checks if the password from the database query is equal to login screen password input
+                        System.out.println("password is correct. ");
+                        if(managerStatusResult.next()){
+                            Boolean checkManager = managerStatusResult.getBoolean("isManager");
+                            if(checkManager == true){ //checks if the person logging in is a manager so they can have access to those corresponding pages
+                                    System.out.println("Manager logged in.");
+                                    currentEmployee.currentEmployeeStatusUpdate(true); 
+                                    login.changeToManager();
+                            }
+                            else{ //if the ID and person is not a manager then it simply pushes them to the regular employee options
+                                    System.out.println("Employee logged in.");
+                                    currentEmployee.currentEmployeeStatusUpdate(false);
+                                    login.changeToEmployee();
+                            }
                         }
-                        else{
-                                System.out.println("Employee logged in.");
-                                currentEmployee.currentEmployeeStatusUpdate(false);
-                                login.changeToEmployee();
-                                //add in where it redirects to regular employee page
-                        }
-                    }
-            }
+                }
             else{
                 System.out.println("Password wrong with current username. ");
             }
-
             }
-
-
             passwordCheck.close();
             userNameCheck.close();
             System.out.println("stmt was closed.");
@@ -141,7 +131,7 @@ public class employeeInformationSQL{
     }
 
     private void inputNewCommissionAmnt(String empID) throws IOException{  //method that actually pushes the new commission ammount to the database
-        employee emp = new employee();
+        Employee emp = new Employee();
         
         try{    
 
@@ -165,4 +155,54 @@ public class employeeInformationSQL{
             e.printStackTrace();
         }
     }
+
+    public void updateEmployeeInformationHelper(String EmpAdd, String EmpBankNum, String EmpID, String EmpPhoneNumChange, String EmpSSNChange){
+        updateEmployeeInformation(EmpAdd, EmpBankNum, EmpID, EmpPhoneNumChange, EmpSSNChange);
+    }
+
+    /*
+     * Method solely updates employee information and can take in any amount of inputs
+     * that the manager might need to change, so if they need to do only one then 
+     * the query will do only that one and not affect the others
+     */
+    private void updateEmployeeInformation(String EmpAdd, String EmpBankNum, String EmpID, String EmpPhoneNumChange, String EmpSSNChange){
+        try{
+            Connection conn = DriverManager.getConnection(driver.getConnection());
+            System.out.println("Connection Established.");
+
+            String changeInfo = "UPDATE employee " + 
+                                "SET " + 
+                                "employeeAddress = CASE WHEN ? <> '' THEN ? ELSE employeeAddress END, " +
+                                "bankNumber = CASE WHEN ? <> '' THEN ? ELSE bankNumber END, " +
+                                "phoneNumber = CASE WHEN ? <> '' THEN ? ELSE phoneNumber END, " +
+                                "SSN = CASE WHEN ? <> '' THEN ? ELSE SSN END " +
+                                "WHERE employeeID = ?";
+
+            PreparedStatement statement = conn.prepareStatement(changeInfo);
+
+            // Setting parameter values
+            statement.setString(1, EmpAdd);
+            statement.setString(2, EmpAdd);
+            statement.setString(3, EmpBankNum);
+            statement.setString(4, EmpBankNum);
+            statement.setString(5, EmpPhoneNumChange);
+            statement.setString(6, EmpPhoneNumChange);
+            statement.setString(7, EmpSSNChange);
+            statement.setString(8, EmpSSNChange);
+            statement.setString(9, EmpID);
+        
+            // Executing the update query
+            int rowsAffected = statement.executeUpdate();
+            
+            // Handle the result as needed
+            System.out.println("Rows affected: " + rowsAffected);
+                            
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    
 }
